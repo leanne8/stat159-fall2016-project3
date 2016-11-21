@@ -1,0 +1,44 @@
+2010-2011 Summary statistic for SAT 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  390.0   540.0   580.0   589.3   630.0   800.0    1829 
+2010-2011 Range for SAT 
+[1] 390 800
+2010-2011 Mean for SAT 
+[1] 589.2702
+2010-2011 Standard deviation for SAT 
+[1] 69.4733
+2010-2011 IQR statistic for SAT 
+[1] 90
+Summary statistics for ACT 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  16.00   23.00   25.00   25.05   27.00   36.00    1990 
+2010-2011 Range for ACT 
+[1] 16 36
+2010-2011 Mean for ACT 
+[1] 25.04905
+2010-2011 Standard deviation for ACT 
+[1] 3.350624
+2010-2011 IQR statistic for ACT 
+[1] 4
+Summary statistic for ADM_RATE 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+ 0.0000  0.4904  0.6640  0.6400  0.7851  1.0000    1193 
+2010-2011 Range for ADM_RATE 
+[1] 0 1
+2010-2011 Mean for ADM_RATE 
+[1] 0.6400298
+2010-2011 Standard deviation for ADM_RATE 
+[1] 0.2050218
+2010-2011 IQR statistic for ADM_RATE 
+[1] 0.294675
+Summary statistics for % graduated at a 4 year institution 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+ 0.0223  0.2340  0.3674  0.3895  0.5167  0.9669     504 
+2010-2011 Range for completion at a 4 years rate 
+[1] 0.02235294 0.96686747
+2010-2011 Mean for completion at a 4 years rate 
+[1] 0.3894725
+2010-2011 Standard deviation for completion at a 4 years rate 
+[1] 0.1907509
+2010-2011 IQR statistic for completion at a 4 years rate 
+[1] 0.2827013
