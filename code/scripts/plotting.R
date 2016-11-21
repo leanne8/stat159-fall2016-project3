@@ -1,0 +1,5 @@
+summary(data13_14$STABBR)
+plot(summary(data13_14$STABBR))
+ggplot(summary(data13_14$STABBR))
+ggplot(data13_14$STABBR)
+ggplot(data13_14, aes(x=STABBR)) + geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust=.25))
