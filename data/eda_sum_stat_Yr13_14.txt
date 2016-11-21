@@ -1,0 +1,33 @@
+2013-2014 Summary statistic for SAT 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  325.0   540.0   580.0   586.3   630.0   800.0    2021 
+2013-2014 Range for SAT 
+[1] 325 800
+2013-2014 Mean for SAT 
+[1] 586.2874
+2013-2014 Standard deviation for SAT 
+[1] 72.56246
+2013-2014 IQR statistic for SAT 
+[1] 90
+Summary statistics for ACT 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  15.00   24.00   25.00   25.32   27.00   36.00    2169 
+2013-2014 Range for ACT 
+[1] 15 36
+2013-2014 Mean for ACT 
+[1] 25.31584
+2013-2014 Standard deviation for ACT 
+[1] 3.299549
+2013-2014 IQR statistic for ACT 
+[1] 3
+Summary statistic for ADM_RATE 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+ 0.0000  0.5494  0.6884  0.6707  0.8134  1.0000    1416 
+2013-2014 Range for ADM_RATE 
+[1] 0 1
+2013-2014 Mean for ADM_RATE 
+[1] 0.6707391
+2013-2014 Standard deviation for ADM_RATE 
+[1] 0.2008099
+2013-2014 IQR statistic for ADM_RATE 
+[1] 0.264
