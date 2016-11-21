@@ -57,6 +57,30 @@ cat ("2010-2011 Standard deviation for completion at a 4 years rate \n")
 sd(CS10_11$COMP_ORIG_YR4_RT, na.rm = TRUE)
 cat ("2010-2011 IQR statistic for completion at a 4 years rate \n")
 IQR(CS10_11$COMP_ORIG_YR4_RT, na.rm = TRUE)
+
+#Frequency 
+sink('data/eda-frequency_Yr10_11.txt')
+cat("SAT Frequency \n")
+SAT <- table(CS10_11$SATMT75)
+NROW(na.omit(CS10_11$SATMT75))
+SATF <- SAT/1262
+cbind(SAT, SATF)
+cat("ACT Frequency \n")
+ACT <- table(CS10_11$ACTMT75)
+NROW(na.omit(CS10_11$ACTMT75))
+ACTF <- ACT/1101
+cbind(ACT, ACTF)
+cat("ADM_RATE Frequency \n")
+ADM <- table(CS10_11$ADM_RATE)
+NROW(na.omit(CS10_11$ADM_RATE))
+ADMF <- ADM/1898
+cbind(ADM, ADMF)
+cat("COMP_ORIG_YR4_RT Frequency \n")
+COMP <- table(CS10_11$COMP_ORIG_YR4_RT)
+NROW(na.omit(CS10_11$COMP_ORIG_YR4_RT))
+COMPF <- COMP/2587
+cbind(COMP, COMPF)
+
 sink()
 
 
@@ -100,6 +124,29 @@ sd(CS11_12$ADM_RATE, na.rm = TRUE)
 cat ("2011-2012 IQR statistic for ADM_RATE \n")
 IQR(CS11_12$ADM_RATE, na.rm = TRUE)
 
+#Frequency 
+sink('data/eda-frequency_Yr11_12.txt')
+cat("SAT Frequency \n")
+SAT <- table(CS11_12$SATMT75)
+NROW(na.omit(CS11_12$SATMT75))
+SATF <- SAT/1263
+cbind(SAT, SATF)
+cat("ACT Frequency \n")
+ACT <- table(CS11_12$ACTMT75)
+NROW(na.omit(CS11_12$ACTMT75))
+ACTF <- ACT/1103
+cbind(ACT, ACTF)
+cat("ADM_RATE Frequency \n")
+ADM <- table(CS11_12$ADM_RATE)
+NROW(na.omit(CS11_12$ADM_RATE))
+ADMF <- ADM/1935
+cbind(ADM, ADMF)
+cat("COMP_ORIG_YR4_RT Frequency \n")
+COMP <- table(CS11_12$COMP_ORIG_YR4_RT)
+NROW(na.omit(CS11_12$COMP_ORIG_YR4_RT))
+COMPF <- COMP/2669
+cbind(COMP, COMPF)
+
 sink()
 
 CS12_13$ADM_RATE <- as.numeric(as.character(CS12_13$ADM_RATE))
@@ -141,6 +188,29 @@ sd(CS12_13$ADM_RATE, na.rm = TRUE)
 cat ("2012-2013 IQR statistic for ADM_RATE \n")
 IQR(CS12_13$ADM_RATE, na.rm = TRUE)
 
+#Frequency 
+sink('data/eda-frequency_Yr12_13.txt')
+cat("SAT Frequency \n")
+SAT <- table(CS12_13$SATMT75)
+NROW(na.omit(CS12_13$SATMT75))
+SATF <- SAT/1286
+cbind(SAT, SATF)
+cat("ACT Frequency \n")
+ACT <- table(CS12_13$ACTMT75)
+NROW(na.omit(CS12_13$ACTMT75))
+ACTF <- ACT/1116
+cbind(ACT, ACTF)
+cat("ADM_RATE Frequency \n")
+ADM <- table(CS12_13$ADM_RATE)
+NROW(na.omit(CS12_13$ADM_RATE))
+ADMF <- ADM/1942
+cbind(ADM, ADMF)
+cat("COMP_ORIG_YR4_RT Frequency \n")
+COMP <- table(CS12_13$COMP_ORIG_YR4_RT)
+NROW(na.omit(CS12_13$COMP_ORIG_YR4_RT))
+COMPF <- COMP/2803
+cbind(COMP, COMPF)
+
 sink()
 
 CS13_14$ADM_RATE <- as.numeric(as.character(CS13_14$ADM_RATE))
@@ -181,6 +251,29 @@ cat ("2013-2014 Standard deviation for ADM_RATE \n")
 sd(CS13_14$ADM_RATE, na.rm = TRUE)
 cat ("2013-2014 IQR statistic for ADM_RATE \n")
 IQR(CS13_14$ADM_RATE, na.rm = TRUE)
+
+#Frequency 
+sink('data/eda-frequency_Yr13_14.txt')
+cat("SAT Frequency \n")
+SAT <- table(CS13_14$SATMT75)
+NROW(na.omit(CS13_14$SATMT75))
+SATF <- SAT/1291
+cbind(SAT, SATF)
+cat("ACT Frequency \n")
+ACT <- table(CS13_14$ACTMT75)
+NROW(na.omit(CS13_14$ACTMT75))
+ACTF <- ACT/1116
+cbind(ACT, ACTF)
+cat("ADM_RATE Frequency \n")
+ADM <- table(CS13_14$ADM_RATE)
+NROW(na.omit(CS13_14$ADM_RATE))
+ADMF <- ADM/1896
+cbind(ADM, ADMF)
+cat("COMP_ORIG_YR4_RT Frequency \n")
+COMP <- table(CS13_14$COMP_ORIG_YR4_RT)
+NROW(na.omit(CS13_14$COMP_ORIG_YR4_RT))
+COMPF <- COMP/2843
+cbind(COMP, COMPF)
 
 sink()
 
