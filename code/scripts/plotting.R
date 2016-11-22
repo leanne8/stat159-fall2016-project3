@@ -18,7 +18,7 @@ png('images/college-frequency.png')
 collegeFreq
 dev.off()
 
-#Above average SAT score vs count
+#Above average SAT Math score vs count
 data13_14$SATMT75 <- as.numeric(as.character(data13_14$SATMT75))
 
 Gp1 = data13_14[which(data13_14$SATMT75 >= 590 & data13_14$SATMT75 <= 660),]
@@ -29,7 +29,7 @@ SATdf <- data.frame(SATscore = c("590-660", "661-730", "730-800"),
                     counts = c(NROW(Gp1), NROW(Gp2), NROW(Gp3)))
 SATplot <- ggplot(data = SATdf, aes(x = SATscore, y = counts)) + 
   geom_bar(stat = "identity",  fill="steelblue", width=0.5) + 
-  ggtitle("Above average SAT score vs count 2013-2014")
+  ggtitle("Above average SAT Math score vs count 2013-2014")
 
 png('images/above-average-SAT-13-14.png')
 SATplot
