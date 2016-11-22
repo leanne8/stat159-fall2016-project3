@@ -12,5 +12,6 @@ topACT <- rbind(topACT1, topACT2)
 topSAT$INSTNM <- as.character(topSAT$INSTNM)
 topACT1$INSTNM <- as.character(topACT1$INSTNM)
 combine <- rbind(topSAT,topACT)
+combineNoOverlap <- unique(combine)
 #The top 85 colleges with top tier SAT and ACT scores. 
-write.csv(combine, file = './data/top_schools.csv')
+write.csv(combineNoOverlap, file = './data/top_schools.csv')
