@@ -1,28 +1,22 @@
 Muliple Linear Regression summary statistics
 
 Call:
-lm(formula = MN_EARN_WNE_INC3_P10 ~ ., data = cleanData)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--29091  -7493   -414   6438  53691 
+lm(formula = MN_EARN_WNE_INC3_P10 ~ SATMT75 + ACTMT75 + ADM_RATE + 
+    COMP_ORIG_YR4_RT, data = cleanData)
 
 Coefficients:
-                  Estimate Std. Error t value Pr(>|t|)   
-(Intercept)      -81863.14   29341.07  -2.790  0.00600 **
-SATMT75             109.03      38.71   2.817  0.00555 **
-ACTMT75            2689.73     832.29   3.232  0.00153 **
-ADM_RATE         -13993.83    8216.53  -1.703  0.09075 . 
-COMP_ORIG_YR4_RT  -7019.57    7961.79  -0.882  0.37946   
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 12370 on 141 degrees of freedom
-Multiple R-squared:  0.4997,	Adjusted R-squared:  0.4855 
-F-statistic: 35.21 on 4 and 141 DF,  p-value: < 2.2e-16
+     (Intercept)           SATMT75           ACTMT75          ADM_RATE  COMP_ORIG_YR4_RT  
+        -90438.0             106.2            2953.2          -14258.7           -1631.4  
 
 Muliple Linear Regression coefficients
      (Intercept)          SATMT75          ACTMT75         ADM_RATE COMP_ORIG_YR4_RT 
-     -81863.1365         109.0325        2689.7313      -13993.8317       -7019.5721 
+     -90437.9983         106.2174        2953.1662      -14258.7434       -1631.4425 
 Muliple Linear Regression MSE
-[1] 147805840
+[1] 138663038
+Multiple Linear Regression correlation 
+                        SATMT75    ACTMT75   ADM_RATE COMP_ORIG_YR4_RT MN_EARN_WNE_INC3_P10
+SATMT75               1.0000000  0.7672561 -0.6871162        0.4975685            0.6701079
+ACTMT75               0.7672561  1.0000000 -0.7487444        0.5783701            0.7075617
+ADM_RATE             -0.6871162 -0.7487444  1.0000000       -0.6138325           -0.6319149
+COMP_ORIG_YR4_RT      0.4975685  0.5783701 -0.6138325        1.0000000            0.4442572
+MN_EARN_WNE_INC3_P10  0.6701079  0.7075617 -0.6319149        0.4442572            1.0000000
