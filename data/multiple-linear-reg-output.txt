@@ -1,0 +1,28 @@
+Muliple Linear Regression summary statistics
+
+Call:
+lm(formula = MN_EARN_WNE_INC3_P10 ~ ., data = cleanData)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-29091  -7493   -414   6438  53691 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(>|t|)   
+(Intercept)      -81863.14   29341.07  -2.790  0.00600 **
+SATMT75             109.03      38.71   2.817  0.00555 **
+ACTMT75            2689.73     832.29   3.232  0.00153 **
+ADM_RATE         -13993.83    8216.53  -1.703  0.09075 . 
+COMP_ORIG_YR4_RT  -7019.57    7961.79  -0.882  0.37946   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 12370 on 141 degrees of freedom
+Multiple R-squared:  0.4997,	Adjusted R-squared:  0.4855 
+F-statistic: 35.21 on 4 and 141 DF,  p-value: < 2.2e-16
+
+Muliple Linear Regression coefficients
+     (Intercept)          SATMT75          ACTMT75         ADM_RATE COMP_ORIG_YR4_RT 
+     -81863.1365         109.0325        2689.7313      -13993.8317       -7019.5721 
+Muliple Linear Regression MSE
+[1] 147805840
