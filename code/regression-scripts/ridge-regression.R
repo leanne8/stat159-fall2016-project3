@@ -62,8 +62,8 @@ test_mse_ridge <- mean((ridge_pred-y_test_scaled)^2)
 
 #6. Last but not least, refit the model on the full data set using the parameter chosen by cross-validation.
 ##  This fit will give you the "official" coefficient estimates.
-ridge_full = glmnet(x_full, y_full, alpha = 0, lambda = bestlambda, intercept = FALSE, standardize = FALSE)
-coeff_ridge = predict(ridge_full, type = "coefficients", s = bestlambda)[1:length(topSchools_scaled),]
+ridge_full <- glmnet(x_full, y_full, alpha = 0, lambda = bestlambda, intercept = FALSE, standardize = FALSE)
+#coeff_ridge <- predict(ridge_full, type = "coefficients", s = bestlambda)[1:length(topSchools_scaled),]
 
 #full prediction
 ridge_pred_full <- predict(cv.out, s=bestlambda, newx = x_full)
