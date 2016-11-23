@@ -16,7 +16,10 @@ topACT1$INSTNM <- as.character(topACT1$INSTNM)
 combine <- rbind(topSAT,topACT)
 clean <- unique(combine)
 clean$MN_EARN_WNE_INC3_P10 <- as.numeric(as.character(clean$MN_EARN_WNE_INC3_P10))
+clean$MN_EARN_WNE_INC2_P10 <- as.numeric(as.character(clean$MN_EARN_WNE_INC2_P10))
+clean$MN_EARN_WNE_INC1_P10 <- as.numeric(as.character(clean$MN_EARN_WNE_INC1_P10))
 clean <- clean[complete.cases(clean$MN_EARN_WNE_INC3_P10), ]
+clean <- clean[complete.cases(clean$MN_EARN_WNE_INC2_P10), ]
 clean <- clean[complete.cases(clean$ACTMT75), ]
 
 #The top 146 colleges with top tier SAT and ACT scores. 
