@@ -41,11 +41,11 @@ y_full <- as.matrix(topSchools_scaled[,5])
 
 #1 Run the corresponding fitting function on the train set using ten-fold cross-validation.
 grid <- 10^seq(10, -2, length = 100)
-set.seed(0)
+set.seed(12345)
 cv.out <- cv.glmnet(x_train_scaled, y_train_scaled, alpha=0, lambda=grid, intercept=FALSE, standardize=FALSE)
 
 #2. Saving list of models(saved in Rdata file at the end)
-listModels <- cv.out
+#listModels <- cv.out
 
 #3. To select the best model:
 bestlambda <- cv.out$lambda.min
@@ -64,6 +64,7 @@ test_mse_ridge <- mean((ridge_pred-y_test_scaled)^2)
 ##  This fit will give you the "official" coefficient estimates.
 ridge_full <- glmnet(x_full, y_full, alpha = 0, lambda = bestlambda, intercept = FALSE, standardize = FALSE)
 #coeff_ridge <- predict(ridge_full, type = "coefficients", s = bestlambda)[1:length(topSchools_scaled),]
+coeff_ridge <- coef(ridge_full, s=bestlambda)
 
 #full prediction
 ridge_pred_full <- predict(cv.out, s=bestlambda, newx = x_full)
