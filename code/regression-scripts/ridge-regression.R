@@ -42,4 +42,30 @@ y_full <- as.matrix(topSchools_scaled[,5])
 #1 Run the corresponding fitting function on the train set using ten-fold cross-validation.
 grid <- 10^seq(10, -2, length = 100)
 set.seed(0)
-cv.out <- cv.glmnet(x_train, y_train, alpha=0, lambda=grid, intercept=FALSE, standardize=FALSE)
+cv.out <- cv.glmnet(x_train_scaled, y_train_scaled, alpha=0, lambda=grid, intercept=FALSE, standardize=FALSE)
+
+#2. Saving list of models(saved in Rdata file at the end)
+listModels <- cv.out
+
+#3. To select the best model:
+bestlambda <- cv.out$lambda.min
+
+#4. Plot the cross-validation errors in terms of the tunning 
+##  parameter to visualize which parameter gives the "best" model:
+#png(filename = "../../images/ridge-cross-validation-errors.png", width=800, height=600)
+#plot(cv.out)
+#dev.off()
+
+#5. Once you identify the "best" model, use the test set to compute the test Mean Square Error(test MSE)
+ridge_pred <- predict(cv.out, s=bestlambda, newx=x_test_scaled)
+test_mse_ridge <- mean((ridge_pred-y_test_scaled)^2)
+
+#6. Last but not least, refit the model on the full data set using the parameter chosen by cross-validation.
+##  This fit will give you the "official" coefficient estimates.
+ridge_full = glmnet(x_full, y_full, alpha = 0, lambda = bestlambda, intercept = FALSE, standardize = FALSE)
+coeff_ridge = predict(ridge_full, type = "coefficients", s = bestlambda)[1:length(topSchools_scaled),]
+
+#full prediction
+ridge_pred_full <- predict(cv.out, s=bestlambda, newx = x_full)
+full_mse_ridge <- mean((ridge_pred_full-y_full)^2)
+
