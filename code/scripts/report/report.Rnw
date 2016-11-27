@@ -30,6 +30,9 @@ library()
 \section{Results}
 
 \section{Conclusions}
+<<r, echo=F>>=
+summary
+@
 
 
 \end{document}
