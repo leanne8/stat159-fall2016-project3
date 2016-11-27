@@ -1,9 +1,35 @@
 \documentclass{article}
-
+\usepackage{amsmath}
 \begin{document}
+
+\title{Report}
+\author{Eranda Bregasi, Leanne Lee, Jamie Stankiewiz}
+\date{12/2/16}
+\maketitle
+
 \SweaveOpts{concordance=TRUE}
 
 
+<<>>=
+load("data/top_schoools.csv")
+load('data/top-set.csv')
+load('data/train-set.csv')
+library()
+@
+
+\section{Abstract}
+
+\section{Introduction}
+
+\section{Data}
+
+\section{Methodology}
+
+\section{Analysis}
+
+\section{Results}
+
+\section{Conclusions}
 
 
 \end{document}
