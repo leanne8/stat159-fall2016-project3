@@ -22,6 +22,7 @@ topschools <- read.csv('data/top_schools.csv')
 #look at the 10 schools with the biggest 'biology and biomedical sciences' program
 order(topschools$PCIP26, decreasing=T)[1:5]
 bio <- topschools[order(topschools$PCIP26, decreasing=T)[1:10],c('INSTNM','PCIP26')]
+rownames(bio) = NULL
 xtable(bio)
 
 bioplot <- ggplot(bio, aes(x=INSTNM, y=PCIP26)) + geom_bar(stat='identity', fill='lightblue') +
@@ -36,11 +37,14 @@ dev.off()
 #look at the 10 schools with the biggest 'mathematics and statistics' programs
 order(topschools$PCIP27, decreasing=T)[1:5]
 mathstats <- topschools[order(topschools$PCIP27, decreasing=T)[1:10],c('INSTNM','PCIP27')]
+rownames(mathstats) = NULL
 xtable(mathstats)
+
 mathstatsplot <- ggplot(mathstats, aes(x=INSTNM, y=PCIP27)) + geom_bar(stat='identity', fill='#CC0066') +
   theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
   ggtitle('Top 10 Biggset Math/Stat Programs') + 
   xlab('College') + ylab('Frequency')
+
 
 png('images/biggestMathStat.png')
 mathstatsplot
@@ -50,6 +54,7 @@ dev.off()
 #look at the 10 schools with the biggest 'computer science and support service' program
 order(topschools$PCIP11, decreasing=T)[1:5]
 CS <- topschools[order(topschools$PCIP11, decreasing=T)[1:10],c('INSTNM','PCIP11')]
+rownames(CS) = NULL
 xtable(CS)
 
 CSplot <- ggplot(CS, aes(x=INSTNM, y=PCIP11)) + geom_bar(stat='identity', fill='#33CC99') +
@@ -64,6 +69,7 @@ dev.off()
 #look at the 10 schools with the biggest 'physical sciences' program
 order(topschools$PCIP40, decreasing=T)[1:5]
 physical <- topschools[order(topschools$PCIP40, decreasing=T)[1:10],c('INSTNM','PCIP40')]
+rownmaes(physical) = NULL
 xtable(physical)
 physicalplot <- ggplot(physical, aes(x=INSTNM, y=PCIP40)) + geom_bar(stat='identity', fill='#330066') +
   theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
@@ -78,6 +84,7 @@ dev.off()
 #there are only 2 schools with a 'science technologies/technicians' program/category
 order(topschools$PCIP41, decreasing=T)[1:5]
 technicians <- topschools[order(topschools$PCIP41, decreasing=T)[1:2],c('INSTNM','PCIP41')]
+rownames(technicians) = NULL
 xtable(technicians)
 techniciansplot <- ggplot(technicians, aes(x=INSTNM, y=PCIP41)) + geom_bar(stat='identity', fill='#993300') +
   theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
@@ -96,7 +103,9 @@ topschools$PCIP14 <- topschools$PCIP14 + topschools$PCIP15
 topschools <- topschools[,-13]
 order(topschools$PCIP14, decreasing=T)[1:5]
 engineering <- topschools[order(topschools$PCIP14, decreasing=T)[1:10],c('INSTNM','PCIP14')]
+rownames(engineering) = NULL
 xtable(engineering)
+
 engineeringplot <- ggplot(engineering, aes(x=INSTNM, y=PCIP14)) + geom_bar(stat='identity', fill='#FFFF00') +
   theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
   ggtitle('Top 10 Biggset Engineering Programs') + 
