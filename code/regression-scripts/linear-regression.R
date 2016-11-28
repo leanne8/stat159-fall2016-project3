@@ -27,7 +27,7 @@ TopMSE <- mean(TopLM$residuals^2)
 MidMSE <- mean(MidLM$residuals^2)
 LowMSE <- mean(LowLM$residuals^2)
 
-#save into OLS binary file
+#save into multiple linear regression binary file
 save(TopLM, MidLM, LowLM, TopCorr, MidCorr, LowCorr,
      TopLMsum, MidLMsum, LowLMsum, TopCoef, MidCoef,
      LowCoef, TopMSE, MidMSE, LowMSE,
