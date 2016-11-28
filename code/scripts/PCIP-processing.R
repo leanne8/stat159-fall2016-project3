@@ -16,16 +16,92 @@ topschools <- read.csv('data/top_schools.csv')
 #This means that the PCIP (percentage of degrees awarded) will give us a feeling for how big a program is at a certain school. 
 #However this does not tell us the quailty of each program, but we have already narrowed our data set to the top schools in the US. 
 
+
+#biggest = highest graduation rate = this school has a big program (has nothing to do about the quality of the program)
+
 #look at the 10 schools with the biggest 'biology and biomedical sciences' program
-#biggest = highest graduation rate
 order(topschools$PCIP26, decreasing=T)[1:5]
-topschools[order(topschools$PCIP26, decreasing=T)[1:10],c('INSTNM','PCIP26')]
+bio <- topschools[order(topschools$PCIP26, decreasing=T)[1:10],c('INSTNM','PCIP26')]
+xtable(bio)
+
+bioplot <- ggplot(bio, aes(x=INSTNM, y=PCIP26)) + geom_bar(stat='identity', fill='lightblue') +
+  theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
+  ggtitle('Top 10 Biggset Bio/Biomedical Programs') + 
+  xlab('College') + ylab('Frequency')
+
+png('images/biggestBio.png')
+bioplot
+dev.off()
 
 #look at the 10 schools with the biggest 'mathematics and statistics' programs
 order(topschools$PCIP27, decreasing=T)[1:5]
-topschools[order(topschools$PCIP27, decreasing=T)[1:10],c('INSTNM','PCIP27')]
+mathstats <- topschools[order(topschools$PCIP27, decreasing=T)[1:10],c('INSTNM','PCIP27')]
+xtable(mathstats)
+mathstatsplot <- ggplot(mathstats, aes(x=INSTNM, y=PCIP27)) + geom_bar(stat='identity', fill='#CC0066') +
+  theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
+  ggtitle('Top 10 Biggset Math/Stat Programs') + 
+  xlab('College') + ylab('Frequency')
+
+png('images/biggestMathStat.png')
+mathstatsplot
+dev.off()
+
 
 #look at the 10 schools with the biggest 'computer science and support service' program
-#biggest = highest graduation rate
 order(topschools$PCIP11, decreasing=T)[1:5]
-topschools[order(topschools$PCIP11, decreasing=T)[1:10],c('INSTNM','PCIP11')]
+CS <- topschools[order(topschools$PCIP11, decreasing=T)[1:10],c('INSTNM','PCIP11')]
+xtable(CS)
+
+CSplot <- ggplot(CS, aes(x=INSTNM, y=PCIP11)) + geom_bar(stat='identity', fill='#33CC99') +
+  theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
+  ggtitle('Top 10 Biggset Computer Science and Support Service Programs') + 
+  xlab('College') + ylab('Frequency')
+
+png('images/biggestCS.png')
+CSplot
+dev.off()
+
+#look at the 10 schools with the biggest 'physical sciences' program
+order(topschools$PCIP40, decreasing=T)[1:5]
+physical <- topschools[order(topschools$PCIP40, decreasing=T)[1:10],c('INSTNM','PCIP40')]
+xtable(physical)
+physicalplot <- ggplot(physical, aes(x=INSTNM, y=PCIP40)) + geom_bar(stat='identity', fill='#330066') +
+  theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
+  ggtitle('Top 10 Biggset Physical Science Programs') + 
+  xlab('College') + ylab('Frequency')
+
+png('images/biggestPhysical.png')
+physicalplot
+dev.off()
+
+
+#there are only 2 schools with a 'science technologies/technicians' program/category
+order(topschools$PCIP41, decreasing=T)[1:5]
+technicians <- topschools[order(topschools$PCIP41, decreasing=T)[1:2],c('INSTNM','PCIP41')]
+xtable(technicians)
+techniciansplot <- ggplot(technicians, aes(x=INSTNM, y=PCIP41)) + geom_bar(stat='identity', fill='#993300') +
+  theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
+  ggtitle('Science Technologies/Technicians Programs') + 
+  xlab('College') + ylab('Frequency')
+
+png('images/biggestTechnicians.png')
+techniciansplot
+dev.off()
+
+#the engineering category was split into 2: 'engineering' and 'engineering technologies and engineering related fields'
+#some schools have put all of their engineering degrees into one category or the other, or put it into both.
+#since they are basically the same category, we will combine the data
+
+topschools$PCIP14 <- topschools$PCIP14 + topschools$PCIP15
+topschools <- topschools[,-13]
+order(topschools$PCIP14, decreasing=T)[1:5]
+engineering <- topschools[order(topschools$PCIP14, decreasing=T)[1:10],c('INSTNM','PCIP14')]
+xtable(engineering)
+engineeringplot <- ggplot(engineering, aes(x=INSTNM, y=PCIP14)) + geom_bar(stat='identity', fill='#FFFF00') +
+  theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
+  ggtitle('Top 10 Biggset Engineering Programs') + 
+  xlab('College') + ylab('Frequency')
+
+png('images/biggestEngineering.png')
+engineeringplot
+dev.off()
