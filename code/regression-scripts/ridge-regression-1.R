@@ -79,7 +79,7 @@ full_mse_ridge1 <- mean((ridge_pred_full1-y_full)^2)
 
 ridge1cor <- cor(topSchools_subset)
 
-save(coeff_ridge1, bestlambda1, full_mse_ridge1, ridge1cor, file='data/rigde1-reg.RData')
+save(cv.out1, coeff_ridge1, bestlambda1, full_mse_ridge1, ridge1cor, file='data/rigde1-reg.RData')
 
 
 #Plot the cross-validation errors
