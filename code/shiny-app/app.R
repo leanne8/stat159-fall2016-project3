@@ -1,31 +1,23 @@
 library(shiny)
-library(ggplot2)
-library(xtable)
 topSchools <- read.csv("../../data/top_schools.csv")
 load("../../data/multiple-linear-reg.RData")
 load("../../data/rigde-reg.RData")
 load("../../data/rigde1-reg.RData")
 load("../../data/rigde2-reg.RData")
-load("../../data/random-forest.RData")
+load("../../data/random-forest-top.RData")
+load("../../data/random-forest-mid.RData")
+load("../../data/random-forest-low.RData")
 
 ui <- fluidPage(
   titlePanel("High Achieving Students from Top Schools"),
-#  selectInput('tier', 'Choose the tier of earning', c("Top tier", "Middle tier", "Low tier")),
-#  selectInput('reg', 'Choose a regression method', c("Multiple Linear Regression",
-#                                                     "Ridge Regression", "Random Forest")),
-#  plotOutput("picture")
-  
   sidebarLayout(
     sidebarPanel(
       selectInput('tier', 'Choose the tier of earning', c("Top tier", "Middle tier", "Low tier")),
       selectInput('reg', 'Choose a regression method', c("Multiple Linear Regression",
                                                          "Ridge Regression", "Random Forest"))
       
- #     plotOutput("picture")
     ),
     
-    # Show a tabset that includes a plot, summary, and table view
-    # of the generated distribution
     mainPanel(
       tabsetPanel(
                   tabPanel("Plot", plotOutput("picture")), 
@@ -65,6 +57,16 @@ server <- function(input, output) {
       plot(rfModel, main = "Top tier earning in Random Forest model")
       plot(varplot, main = "Variance Importance in Random Forest")
     }
+    if(input$reg == "Random Forest" && input$tier == "Middle tier") {
+      par(mfrow=c(1,2))
+      plot(rfModelMid, main = "Middle tier earning in Random Forest model")
+      plot(varplotMid, main = "Variance Importance in Random Forest")
+    }
+    if(input$reg == "Random Forest" && input$tier == "Low tier") {
+      par(mfrow=c(1,2))
+      plot(rfModelLow, main = "Low tier earning in Random Forest model")
+      plot(varplotLow, main = "Variance Importance in Random Forest")
+    }
   })
   output$mse <- renderPrint({
     if(input$reg == "Ridge Regression" && input$tier == "Top tier") {
@@ -88,7 +90,14 @@ server <- function(input, output) {
     else if(input$reg == "Random Forest" && input$tier == "Top tier") {
       imp
     }
+    else if(input$reg == "Random Forest" && input$tier == "Middle tier") {
+      impMid
+    }
+    else if(input$reg == "Random Forest" && input$tier == "Low tier") {
+      impLow
+    }
   })
+
   output$cor <- renderPrint({
     if(input$reg == "Ridge Regression" && input$tier == "Top tier") {
       ridgecor
@@ -108,8 +117,9 @@ server <- function(input, output) {
     else if(input$reg == "Multiple Linear Regression" && input$tier == "Low tier") {
       LowCorr
     }
-    
+    #Random Forest doesn't have correlation
   })
+  
   output$coeff <- renderPrint({
     if(input$reg == "Ridge Regression" && input$tier == "Top tier") {
       coeff_ridge
@@ -129,6 +139,7 @@ server <- function(input, output) {
     else if(input$reg == "Multiple Linear Regression" && input$tier == "Low tier") {
       LowCoef
     }
+    #Random Forest doesn't have coefficients
   })
 }
 
