@@ -3,9 +3,9 @@ topSchools <- read.csv('data/top_schools.csv')
 cleanData <- topSchools[c("SATMT75", "ACTMT75", "ADM_RATE", "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC3_P10")]
 cleanData2 <- topSchools[c("SATMT75", "ACTMT75", "ADM_RATE", "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC2_P10")]
 cleanData3 <- topSchools[c("SATMT75", "ACTMT75", "ADM_RATE", "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC1_P10")]
-cleanData <- as.matrix(scale(cleanData, center=T, scale=T))
-cleanData2 <- as.matrix(scale(cleanData2, center=T, scale=T))
-cleanData3 <- as.matrix(scale(cleanData3, center=T, scale=T))
+cleanData <- data.frame(scale(cleanData, center=T, scale=T))
+cleanData2 <- data.frame(scale(cleanData2, center=T, scale=T))
+cleanData3 <- data.frame(scale(cleanData3, center=T, scale=T))
 
 TopLM <- lm(MN_EARN_WNE_INC3_P10 ~ ., data = cleanData)
 MidLM <- lm(MN_EARN_WNE_INC2_P10 ~ ., data = cleanData2)
