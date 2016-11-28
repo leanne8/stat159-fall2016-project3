@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.5)  23 NOV 2016 19:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.5)  28 NOV 2016 12:24
 entering extended mode
 **./report.tex
 (report.tex
@@ -312,25 +312,30 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-(report-concordance.tex) [1
+(report-concordance.tex)
+LaTeX Font Info:    Try loading font information for T1+aett on input line 51.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+) [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (report.aux) ) 
 Here is how much of TeX's memory you used:
- 3276 strings out of 493334
- 44376 string characters out of 3139253
- 99805 words of memory out of 3000000
- 6745 multiletter control sequences out of 15000+200000
- 20123 words of font info for 47 fonts, out of 3000000 for 9000
+ 3303 strings out of 493334
+ 44837 string characters out of 3139253
+ 101805 words of memory out of 3000000
+ 6766 multiletter control sequences out of 15000+200000
+ 21424 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,6n,25p,248b,189s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,7n,25p,248b,198s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr17.pfb>
-Output written on report.pdf (1 page, 42299 bytes).
+pe1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (1 page, 68667 bytes).
 PDF statistics:
- 23 PDF objects out of 1000 (max. 8388607)
+ 27 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  5 words of extra memory for PDF output out of 10000 (max. 10000000)
 
