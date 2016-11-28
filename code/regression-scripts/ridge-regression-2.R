@@ -81,3 +81,8 @@ ridge2cor <- cor(topSchools_subset)
 
 save(coeff_ridge2, bestlambda2, full_mse_ridge2, ridge2cor, file='data/rigde2-reg.RData')
 
+
+#Plot the cross-validation errors
+png("images/ridgeCV_middle.png")
+plot(cv.out2)
+dev.off()
