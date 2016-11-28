@@ -26,7 +26,18 @@ server <- function(input, output) {
     if(input$reg == "Ridge Regression" && input$tier == "Low tier") {
       plot(cv.out1)
     }
-    
+    if(input$reg == "Multiple Linear Regression" && input$tier == "Top tier") {
+      par(mfrow=c(2,2))
+      plot(TopLM)
+    }
+    if(input$reg == "Multiple Linear Regression" && input$tier == "Middle tier") {
+      par(mfrow=c(2,2))
+      plot(MidLM)
+    }
+    if(input$reg == "Multiple Linear Regression" && input$tier == "Low tier") {
+      par(mfrow=c(2,2))
+      plot(LowLM)
+    }
   })
 }
 
