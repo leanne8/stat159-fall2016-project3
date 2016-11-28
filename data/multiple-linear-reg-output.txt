@@ -5,13 +5,13 @@ lm(formula = MN_EARN_WNE_INC3_P10 ~ ., data = cleanData)
 
 Coefficients:
      (Intercept)           SATMT75           ACTMT75          ADM_RATE  COMP_ORIG_YR4_RT  
-        -90438.0             106.2            2953.2          -14258.7           -1631.4  
+      -9.648e-17         2.645e-01         3.854e-01        -1.709e-01        -1.518e-02  
 
 Multiple Linear Regression coefficients
      (Intercept)          SATMT75          ACTMT75         ADM_RATE COMP_ORIG_YR4_RT 
-     -90437.9983         106.2174        2953.1662      -14258.7434       -1631.4425 
+   -9.647802e-17     2.645053e-01     3.854495e-01    -1.708827e-01    -1.517816e-02 
 Multiple Linear Regression MSE
-[1] 138663038
+[1] 0.4452215
 Multiple Linear Regression correlation 
                         SATMT75    ACTMT75   ADM_RATE COMP_ORIG_YR4_RT MN_EARN_WNE_INC3_P10
 SATMT75               1.0000000  0.7672561 -0.6871162        0.4975685            0.6701079
