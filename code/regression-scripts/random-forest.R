@@ -16,7 +16,7 @@ imp <- importance(rfModel,type = 2)
 #to splits by a variable over the trees, which is also the mean decrease in MSE.
 
 # Variable Importance Plot
-varImpPlot(rfModel, sort = T, main = "Variance Importance", n.var = 4)
+varplot <- varImpPlot(rfModel, sort = T, main = "Variance Importance", n.var = 4)
 
 #Predict response variable value using random forest model
 predModel = predict(rfModel, testSet)
@@ -24,4 +24,4 @@ predModel = predict(rfModel, testSet)
 res = table(predModel, testSet$MN_EARN_WNE_INC3_P10)
 
 #save into random forest binary file
-save(rfModel, imp, predModel, res,file="./data/random-forest.RData")
+save(rfModel, imp, predModel,varplot, res,file="./data/random-forest.RData")
