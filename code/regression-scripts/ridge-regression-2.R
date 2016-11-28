@@ -23,11 +23,18 @@ set.seed(12345)
 
 trainset <- read.csv('data/train-set.csv')
 trainset_subset <- trainset[c('SATMT75', 'ACTMT75', 'ADM_RATE', 'COMP_ORIG_YR4_RT', 'MN_EARN_WNE_INC2_P10')]
+trainset_subset$MN_EARN_WNE_INC2_P10 <- as.numeric(as.character(trainset_subset$MN_EARN_WNE_INC2_P10))
 trainset_scaled <- scale(trainset_subset, center=T, scale=T)
+
+trainset_scaled <- trainset_scaled[complete.cases(trainset_scaled),]
 
 testset <- read.csv('data/test-set.csv')
 testset_subset <- trainset[c('SATMT75', 'ACTMT75', 'ADM_RATE', 'COMP_ORIG_YR4_RT', 'MN_EARN_WNE_INC2_P10')]
+testset_subset$MN_EARN_WNE_INC2_P10 <- as.numeric(as.character(testset_subset$MN_EARN_WNE_INC2_P10))
 testset_scaled <- scale(testset_subset, center=T, scale=T)
+
+testset_scaled <- testset_scaled[complete.cases(testset_scaled),]
+
 
 x_train_scaled <- as.matrix(trainset_scaled[,1:4])
 y_train_scaled <- as.matrix(trainset_scaled[,5])
@@ -48,7 +55,7 @@ cv.out2 <- cv.glmnet(x_train_scaled, y_train_scaled, alpha=0, lambda=grid, inter
 #listModels <- cv.out
 
 #3. To select the best model:
-bestlambda2 <- cv.out$lambda.min
+bestlambda2 <- cv.out2$lambda.min
 
 #4. Plot the cross-validation errors in terms of the tunning 
 ##  parameter to visualize which parameter gives the "best" model:
@@ -57,18 +64,18 @@ bestlambda2 <- cv.out$lambda.min
 #dev.off()
 
 #5. Once you identify the "best" model, use the test set to compute the test Mean Square Error(test MSE)
-ridge_pred2 <- predict(cv.out, s=bestlambda, newx=x_test_scaled)
-test_mse_ridge2 <- mean((ridge_pred-y_test_scaled)^2)
+ridge_pred2 <- predict(cv.out2, s=bestlambda2, newx=x_test_scaled)
+test_mse_ridge2 <- mean((ridge_pred2-y_test_scaled)^2)
 
 #6. Last but not least, refit the model on the full data set using the parameter chosen by cross-validation.
 ##  This fit will give you the "official" coefficient estimates.
-ridge_full2 <- glmnet(x_full, y_full, alpha = 0, lambda = bestlambda, intercept = FALSE, standardize = FALSE)
+ridge_full2 <- glmnet(x_full, y_full, alpha = 0, lambda = bestlambda2, intercept = FALSE, standardize = FALSE)
 #coeff_ridge <- predict(ridge_full, type = "coefficients", s = bestlambda)[1:length(topSchools_scaled),]
-coeff_ridge2 <- coef(ridge_full, s=bestlambda)
+coeff_ridge2 <- coef(ridge_full2, s=bestlambda2)
 
 #full prediction
-ridge_pred_full2 <- predict(cv.out, s=bestlambda, newx = x_full)
-full_mse_ridge2 <- mean((ridge_pred_full-y_full)^2)
+ridge_pred_full2 <- predict(cv.out2, s=bestlambda2, newx = x_full)
+full_mse_ridge2 <- mean((ridge_pred_full2-y_full)^2)
 
 ridge2cor <- cor(topSchools_subset)
 
