@@ -10,12 +10,20 @@
 \SweaveOpts{concordance=TRUE}
 
 
-<<>>=
-load("data/top_schoools.csv")
-load('data/top-set.csv')
-load('data/train-set.csv')
-library()
+<<loadData, echo=FALSE>>=
+topschools <- read.csv("~/pandoc-test/stat159/stat159-fall2016-project3/data/top_schools.csv")
+test_set <- read.csv('~/pandoc-test/Stat159/stat159-fall2016-project3/data/test-set.csv')
+train_set <- read.csv('~/pandoc-test/Stat159/stat159-fall2016-project3/data/train-set.csv')
+
+library(xtable)
 @
+
+<<r, echo=F, results=tex>>=
+
+bio <- topschools[order(topschools$PCIP26, decreasing=T)[1:10],c('INSTNM','PCIP26')]
+xtable(bio)
+@
+
 
 \section{Abstract}
 
@@ -30,9 +38,6 @@ library()
 \section{Results}
 
 \section{Conclusions}
-<<r, echo=F>>=
-summary
-@
 
 
 \end{document}
