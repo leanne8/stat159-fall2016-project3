@@ -1,17 +1,16 @@
-Muliple Linear Regression summary statistics
+Multiple Linear Regression summary statistics for top tier of earning
 
 Call:
-lm(formula = MN_EARN_WNE_INC3_P10 ~ SATMT75 + ACTMT75 + ADM_RATE + 
-    COMP_ORIG_YR4_RT, data = cleanData)
+lm(formula = MN_EARN_WNE_INC3_P10 ~ ., data = cleanData)
 
 Coefficients:
      (Intercept)           SATMT75           ACTMT75          ADM_RATE  COMP_ORIG_YR4_RT  
         -90438.0             106.2            2953.2          -14258.7           -1631.4  
 
-Muliple Linear Regression coefficients
+Multiple Linear Regression coefficients
      (Intercept)          SATMT75          ACTMT75         ADM_RATE COMP_ORIG_YR4_RT 
      -90437.9983         106.2174        2953.1662      -14258.7434       -1631.4425 
-Muliple Linear Regression MSE
+Multiple Linear Regression MSE
 [1] 138663038
 Multiple Linear Regression correlation 
                         SATMT75    ACTMT75   ADM_RATE COMP_ORIG_YR4_RT MN_EARN_WNE_INC3_P10
