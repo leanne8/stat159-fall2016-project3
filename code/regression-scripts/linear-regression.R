@@ -1,8 +1,8 @@
 topSchools <- read.csv('data/top_schools.csv')
 
-cleanData <- topSchools[c("SATMT75", "ACTMT75", "ADM_RATE", "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC3_P10")]
-cleanData2 <- topSchools[c("SATMT75", "ACTMT75", "ADM_RATE", "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC2_P10")]
-cleanData3 <- topSchools[c("SATMT75", "ACTMT75", "ADM_RATE", "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC1_P10")]
+cleanData <- topSchools[c("SATMT75", "ACTMT75", "ADM_RATE", "PELL_COMP_ORIG_YR6_RT", "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC3_P10")]
+cleanData2 <- topSchools[c("SATMT75", "ACTMT75", "ADM_RATE","PELL_COMP_ORIG_YR6_RT",  "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC2_P10")]
+cleanData3 <- topSchools[c("SATMT75", "ACTMT75","ADM_RATE", "PELL_COMP_ORIG_YR6_RT",  "COMP_ORIG_YR4_RT","MN_EARN_WNE_INC1_P10")]
 cleanData <- data.frame(scale(cleanData, center=T, scale=T))
 cleanData2 <- data.frame(scale(cleanData2, center=T, scale=T))
 cleanData3 <- data.frame(scale(cleanData3, center=T, scale=T))
@@ -23,15 +23,16 @@ par(mfrow=c(2,2))
 plot(LowLM)
 dev.off()
 
-
+#Correlation
 TopCorr <- cor(cleanData)
 MidCorr <- cor(cleanData2)
 LowCorr <- cor(cleanData3)
 
-#Find the summary of multiple linear regression
-TopLMsum <- summary(TopLM)
-MidLMsum <- summary(MidLM)
-LowLMsum <- summary(LowLM)
+
+#Find the r-squared of multiple linear regression
+TopLMsum <- summary(TopLM)$r.squared
+MidLMsum <- summary(MidLM)$r.squared
+LowLMsum <- summary(LowLM)$r.squared
 
 #Coeffiecients 
 TopCoef <- coef(TopLM)

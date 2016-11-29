@@ -4,18 +4,30 @@ Call:
 lm(formula = MN_EARN_WNE_INC3_P10 ~ ., data = cleanData)
 
 Coefficients:
-     (Intercept)           SATMT75           ACTMT75          ADM_RATE  COMP_ORIG_YR4_RT  
-      -5.054e-16         2.645e-01         3.854e-01        -1.709e-01        -1.518e-02  
+          (Intercept)                SATMT75                ACTMT75  
+           -4.646e-16              2.517e-01              3.706e-01  
+             ADM_RATE  PELL_COMP_ORIG_YR6_RT       COMP_ORIG_YR4_RT  
+           -1.391e-01             -3.841e-01              3.260e-01  
 
 Multiple Linear Regression coefficients
-     (Intercept)          SATMT75          ACTMT75         ADM_RATE COMP_ORIG_YR4_RT 
-   -5.053664e-16     2.645053e-01     3.854495e-01    -1.708827e-01    -1.517816e-02 
+          (Intercept)               SATMT75               ACTMT75              ADM_RATE 
+        -4.646350e-16          2.517286e-01          3.705993e-01         -1.391154e-01 
+PELL_COMP_ORIG_YR6_RT      COMP_ORIG_YR4_RT 
+        -3.840951e-01          3.259766e-01 
 Multiple Linear Regression MSE
-[1] 0.4452215
+[1] 0.3939347
 Multiple Linear Regression correlation 
-                        SATMT75    ACTMT75   ADM_RATE COMP_ORIG_YR4_RT MN_EARN_WNE_INC3_P10
-SATMT75               1.0000000  0.7672561 -0.6871162        0.4975685            0.6701079
-ACTMT75               0.7672561  1.0000000 -0.7487444        0.5783701            0.7075617
-ADM_RATE             -0.6871162 -0.7487444  1.0000000       -0.6138325           -0.6319149
-COMP_ORIG_YR4_RT      0.4975685  0.5783701 -0.6138325        1.0000000            0.4442572
-MN_EARN_WNE_INC3_P10  0.6701079  0.7075617 -0.6319149        0.4442572            1.0000000
+                         SATMT75    ACTMT75   ADM_RATE PELL_COMP_ORIG_YR6_RT
+SATMT75                1.0000000  0.7672561 -0.6871162             0.3221842
+ACTMT75                0.7672561  1.0000000 -0.7487444             0.3875990
+ADM_RATE              -0.6871162 -0.7487444  1.0000000            -0.4106964
+PELL_COMP_ORIG_YR6_RT  0.3221842  0.3875990 -0.4106964             1.0000000
+COMP_ORIG_YR4_RT       0.4975685  0.5783701 -0.6138325             0.7985229
+MN_EARN_WNE_INC3_P10   0.6701079  0.7075617 -0.6319149             0.1580858
+                      COMP_ORIG_YR4_RT MN_EARN_WNE_INC3_P10
+SATMT75                      0.4975685            0.6701079
+ACTMT75                      0.5783701            0.7075617
+ADM_RATE                    -0.6138325           -0.6319149
+PELL_COMP_ORIG_YR6_RT        0.7985229            0.1580858
+COMP_ORIG_YR4_RT             1.0000000            0.4442572
+MN_EARN_WNE_INC3_P10         0.4442572            1.0000000

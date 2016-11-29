@@ -18,8 +18,12 @@ clean <- unique(combine)
 clean$MN_EARN_WNE_INC3_P10 <- as.numeric(as.character(clean$MN_EARN_WNE_INC3_P10))
 clean$MN_EARN_WNE_INC2_P10 <- as.numeric(as.character(clean$MN_EARN_WNE_INC2_P10))
 clean$MN_EARN_WNE_INC1_P10 <- as.numeric(as.character(clean$MN_EARN_WNE_INC1_P10))
+clean$COMPL_RPY_1YR_RT <- as.numeric(as.character(clean$COMPL_RPY_1YR_RT))
+clean$LO_INC_COMP_ORIG_YR4_RT <- as.numeric(as.character(clean$LO_INC_COMP_ORIG_YR4_RT))
+clean$MD_INC_COMP_ORIG_YR4_RT <- as.numeric(as.character(clean$MD_INC_COMP_ORIG_YR4_RT))
 clean <- clean[complete.cases(clean$MN_EARN_WNE_INC3_P10), ]
 clean <- clean[complete.cases(clean$MN_EARN_WNE_INC2_P10), ]
+clean <- clean[complete.cases(clean$MN_EARN_WNE_INC1_P10), ]
 clean <- clean[complete.cases(clean$ACTMT75), ]
 
 #The top 146 colleges with top tier SAT and ACT scores. 
