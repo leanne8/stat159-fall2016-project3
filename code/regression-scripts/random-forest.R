@@ -10,7 +10,9 @@ testSet = testSet[c("SATMT75", "ACTMT75", "ADM_RATE", "COMP_ORIG_YR4_RT","PELL_C
 testSet =  data.frame(scale(testSet, center=TRUE, scale=TRUE))
 testSet <- testSet[complete.cases(testSet$MN_EARN_WNE_INC3_P10),]
 rfModel = randomForest(MN_EARN_WNE_INC3_P10 ~ ., trainSet, ntree= 500)
+png("images/rf_top.png")
 plot(rfModel)
+dev.off()
 #We plot the error rate across decision trees.
 #The plot shows that the error become more stable after 50 decision trees.
 
