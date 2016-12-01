@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{amsmath}
+\usepackage{hyperref}
 \usepackage{Sweave}
 \begin{document}
 
@@ -12,33 +12,105 @@
 
 
 
-% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Mon Nov 28 12:24:30 2016
-\begin{table}[ht]
-\centering
-\begin{tabular}{rlr}
-  \hline
- & INSTNM & PCIP26 \\ 
-  \hline
-6 & University of California-San Diego & 0.23 \\ 
-  4 & University of California-Davis & 0.20 \\ 
-  2 & Hendrix College & 0.19 \\ 
-  46 & Union College & 0.19 \\ 
-  11 & Colorado College & 0.16 \\ 
-  5 & University of California-Irvine & 0.16 \\ 
-  75 & University of California-Los Angeles & 0.15 \\ 
-  34 & St Olaf College & 0.15 \\ 
-  17 & University of Miami & 0.14 \\ 
-  9 & University of the Pacific & 0.14 \\ 
-   \hline
-\end{tabular}
-\end{table}
+
 
 \section{Abstract}
 
+This project focuses on providing our client from the Biotech Industry with the most qualified applicant who fulfill their criterias of recruitment. Though at first we'd have to go through all individuals, the talent would only be restricted to women who are very high-achieving in STEM fields, while excluding the male gender. To determine the bar for the applicants' ranking, we would have to focus on the use of College ScoreCard dataset. Since our dependent variable would be earning, the rest would be independent variables. To achieve the final process of data cleaning, we need to filter out the top schools using SAT math and ACT scores, since they are standard elements of admission process. Then we would have to consider the relationship between admission rate and graduation rate, while taking into account the SAT math and ACT scores and observe how they affect the future earnings.
+
+
 \section{Introduction}
 
-\section{Data}
+The purpose of this research is to find high achieving students in the fields of Science, Technology, Engineering and Mathematics. To achieve this, we first look at the SAT math and ACT scores and consider only the ones with at least one standard deviation above, since we have to set a minimum score to categorize the high achieving students that the companies are looking for. After this step, it is easy to filter out schools in terms of their admission rate criteria. Based on our data analysis, we can easily see that students who received pell grant with high SAT math/ACT scores attend more selective schools, which have a low admission rate and higher graduation rate. This directly affects our dependent variable of earnings, since it leads to higher earnings. 
+After our data cleaning process, we focus particularly on these top schools that remain after our filter and we have to figure out the percentage of students who received a 4 year degree in STEM fields, such as BioEngineering, Engineering, Mathematics, Statistics and others. For the completion of this project and to have an effective and accurate comparison of our data, we chose to use three different kinds of regression models that we learned throughout the semester. We used ridge regression, random forest and multiple linear regression to fit our data against different tiers of earnings. The reason we chose these regressions because of the co-linearities and to effectively compare. Our predictors include the SAT math and ACT scores, the admission, graduation rate after the 4 years of attendance in a higher institution and pell grant recipients, and finally our dependent variable which consist of earnings in different tiers. 
+
+
+\section{Dataset}
+
+We use the dataset \emph{CollegeScore Card} from \url{https://collegescorecard.ed.gov/data/}. In \emph{data-subsetting.R}, we subset 34 columns that we need for the project. We carefully examined each predictors and see which predictors fit our needs to increase the performance in analysis.  In \emph{data-cleaning.R},  there's a lot of null data and privacy suppressed data so we have to delete those rows and replace some with N/A. After cleaning the data we put them in different csv files. In the \emph{pre-processing.R} we select schools with top SAT math and ACT scores that are at least one standard deviation above average, and then we turn those columns that we need into numerics from factors. We decided on 5 predictors and 1 dependent variable out of the 34 options. Finally, we export the clean dataset into a \emph{topschool.csv}.
+
+\begin{Schunk}
+\begin{Soutput}
+ [1] "X"                    "INSTNM"               "CITY"                
+ [4] "STABBR"               "ZIP"                  "ADM_RATE"            
+ [7] "SATMT75"              "ACTMT75"              "COMP_ORIG_YR4_RT"    
+[10] "PCIP11"               "PCIP14"               "PCIP15"              
+[13] "PCIP26"               "PCIP27"               "PCIP29"              
+[16] "PCIP40"               "PCIP41"               "C150_4"              
+[19] "MN_EARN_WNE_INC1_P10" "MN_EARN_WNE_INC2_P10" "MN_EARN_WNE_INC3_P10"
+[22] "PCT90_EARN_WNE_P6"    "ICLEVEL"             
+\end{Soutput}
+\end{Schunk}
+We have decided it was useful to keep descriptive categories such as 
+\begin{Schunk}
+\begin{Soutput}
+[1] "X"      "INSTNM" "CITY"   "STABBR"
+\end{Soutput}
+\end{Schunk}
+
+which give the institution name, city, state, and zip code respectively.  In deciding which categories will give a college certain desirable characteristics for our client, we broke the factors into 3 parts
+
+
+Among the quantitative variables, pre-admission data includes the school's 75th percentile of the math SAT and math ACT scores:
+\begin{Schunk}
+\begin{Soutput}
+[1] "ADM_RATE" "SATMT75" 
+\end{Soutput}
+\end{Schunk}
+as well as the school's average admission rate: 
+\begin{Schunk}
+\begin{Soutput}
+[1] "ZIP"
+\end{Soutput}
+\end{Schunk}
+In-school data includes the school's graduation rate 
+\begin{Schunk}
+\begin{Soutput}
+[1] "ACTMT75"
+\end{Soutput}
+\end{Schunk}
+as well as the "percentage of degrees awarded in" 8 specific programs named, 
+\begin{Schunk}
+\begin{Soutput}
+[1] "COMP_ORIG_YR4_RT" "PCIP11"           "PCIP14"           "PCIP15"          
+[5] "PCIP26"           "PCIP27"           "PCIP29"           "PCIP40"          
+\end{Soutput}
+\end{Schunk}
+which respectively stand for:
+\begin{center}
+\begin{flushleft}
+PCIP11 = computer and information sciences and support services \newline
+PCIP14 = engineering \newline
+PCIP15 = engineering technologies and engineering related fields \newline
+PCIP26 = biological and biomedical sciences \newline
+PCIP27 = mathematics and statistics \newline
+PCIP29 = military technologies and applied sciences \newline
+PCIP40 = physical sciences \newline
+PCIP41 = science technologies/technicians \newline
+\end{flushleft}
+\end{center}
+These variables will help us to determine the quality of the school, and the size of each program.  Post-graduation data includes the ``mean earnings of students working and not enrolled 10 years after entry in" 3 different categorical earnings denoted:  
+
+\begin{Schunk}
+\begin{Soutput}
+[1] "C150_4"               "MN_EARN_WNE_INC1_P10" "MN_EARN_WNE_INC2_P10"
+[4] "MN_EARN_WNE_INC3_P10" "PCT90_EARN_WNE_P6"   
+\end{Soutput}
+\end{Schunk}
+
+MN\_EARN\_WNE\_INC1\_P10 = ``lowest income tercile \$0 - \$30,000" - low tier \newline
+MN\_EARN\_WNE\_INC2\_P10 $=$ ``middle income tercile \$30,001 - \$75,000" - middle tier \newline
+MN\_EARN\_WNE\_INC3\_P10 $=$ ``highest income tercile \$75,001  " - top tier \newline
+
+These categories will be used in our regression-models to help us determine the top schools as well as the visualizations created.
+
+Once we have properly subsetted our dataset, it was necessary to clean it in order to be properly used.  In particular, all of the PCIP columns that contained the value 0 was replaced by NA.  We then needed to take out only the schools that were a 4 year institution, 
+\begin{Schunk}
+\begin{Soutput}
+[1] "PCT90_EARN_WNE_P6"
+\end{Soutput}
+\end{Schunk}
+
 
 \section{Methodology}
 
@@ -47,14 +119,6 @@
 \section{Results}
 
 \section{Conclusions}
-\begin{Schunk}
-\begin{Soutput}
-function (object, ...) 
-UseMethod("summary")
-<bytecode: 0x00000000143ce438>
-<environment: namespace:base>
-\end{Soutput}
-\end{Schunk}
 
 
 \end{document}
