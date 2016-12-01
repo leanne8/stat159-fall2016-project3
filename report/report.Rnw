@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{hyperref}
+\usepackage{amsmath}
 \begin{document}
 
 \title{Report}
@@ -48,24 +49,30 @@ We have decided it was useful to keep descriptive categories such as
 colnames(CSC10_11)[1:4] 
 @ 
 
-which give the institution name, city, state, and zip code respectively.  In deciding which categories will give a college certain desirable characteristics for our client, we broke the factors into 3 parts
+which give the institution name, city, state, and zip code respectively.  In deciding which categories will give a college certain desirable characteristics for our client, we broke the factors into 3 parts:
+
+\begin{enumerate}
+\item Pre-Admission: Data that describe how hard it is to get into a certain college
+\item In-school: Data to tell us how many students graduate from each school and department of interest
+\item Post-graduation: Data that will describe how much students make after graduating
+\end{enumerate}
 
 
 Among the quantitative variables, pre-admission data includes the school's 75th percentile of the math SAT and math ACT scores:
 <<r, echo=F>>= 
-colnames(CSC10_11)[6:7] 
+colnames(CSC10_11)[7:8] 
 @  
 as well as the school's average admission rate: 
 <<r, echo=F>>= 
-colnames(CSC10_11)[5] 
+colnames(CSC10_11)[6] 
 @
 In-school data includes the school's graduation rate 
 <<r, echo=F>>= 
-colnames(CSC10_11)[8] 
+colnames(CSC10_11)[9] 
 @
 as well as the "percentage of degrees awarded in" 8 specific programs named, 
 <<r, echo=F>>= 
-colnames(CSC10_11)[9:16] 
+colnames(CSC10_11)[10:17] 
 @
 which respectively stand for:
 \begin{center}
@@ -83,21 +90,26 @@ PCIP41 = science technologies/technicians \newline
 These variables will help us to determine the quality of the school, and the size of each program.  Post-graduation data includes the ``mean earnings of students working and not enrolled 10 years after entry in" 3 different categorical earnings denoted:  
 
 <<r, echo=F>>= 
-colnames(CSC10_11)[18:22] 
+colnames(CSC10_11)[19:21] 
 @ 
 
-
-MN\_EARN\_WNE\_INC1\_P10 = ``lowest income tercile \$0 - \$30,000" - low tier \newline
-MN\_EARN\_WNE\_INC2\_P10 = ``middle income tercile \$30,001 - \$75,000" - middle tier \newline
+MN\_EARN\_WNE\_INC1\_P10 = ``lowest income tercile \$0-\$30,000" - low tier \newline
+MN\_EARN\_WNE\_INC2\_P10 = ``middle income tercile \$30,001-\$75,000" - middle tier \newline
 MN\_EARN\_WNE\_INC3\_P10 = ``highest income tercile \$75,001  " - top tier \newline
 
 These categories will be used in our regression-models to help us determine the top schools as well as the visualizations created.
 
 Once we have properly subsetted our dataset, it was necessary to clean it in order to be properly used.  In particular, all of the PCIP columns that contained the value 0 was replaced by NA.  We then needed to take out only the schools that were a 4 year institution, 
 <<r, echo=F>>= 
-colnames(CSC10_11)[22] 
+colnames(CSC10_11)[23] 
 @
-
+in this dataset, this column is categorical: 
+  \begin{flushleft}
+  1 = 4-year institution \newline
+  2 = 2-year institution \newline
+  3 = less than 2-year institution \newline
+  \end{flushleft}
+  For our analysis, the only schools our client should be interested in are top 4-year institutions.  So we subsetted our data set appropriately.
 
 \section{Methodology}
 

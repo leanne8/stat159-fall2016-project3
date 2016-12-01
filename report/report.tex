@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{hyperref}
+\usepackage{amsmath}
 \usepackage{Sweave}
 \begin{document}
 
@@ -50,30 +51,35 @@ We have decided it was useful to keep descriptive categories such as
 
 which give the institution name, city, state, and zip code respectively.  In deciding which categories will give a college certain desirable characteristics for our client, we broke the factors into 3 parts
 
+\begin{enumerate}
+\item Pre-Admission: Data that describe how hard it is to get into a certain college
+\item In-school: Data to tell us how many students graduate from each school and department of interest
+\item Post-graduation: Data that will describe how much students make after graduating
+\end{enumerate}
+
 
 Among the quantitative variables, pre-admission data includes the school's 75th percentile of the math SAT and math ACT scores:
 \begin{Schunk}
 \begin{Soutput}
-[1] "ADM_RATE" "SATMT75" 
+[1] "SATMT75" "ACTMT75"
 \end{Soutput}
 \end{Schunk}
 as well as the school's average admission rate: 
 \begin{Schunk}
 \begin{Soutput}
-[1] "ZIP"
+[1] "ADM_RATE"
 \end{Soutput}
 \end{Schunk}
 In-school data includes the school's graduation rate 
 \begin{Schunk}
 \begin{Soutput}
-[1] "ACTMT75"
+[1] "COMP_ORIG_YR4_RT"
 \end{Soutput}
 \end{Schunk}
 as well as the "percentage of degrees awarded in" 8 specific programs named, 
 \begin{Schunk}
 \begin{Soutput}
-[1] "COMP_ORIG_YR4_RT" "PCIP11"           "PCIP14"           "PCIP15"          
-[5] "PCIP26"           "PCIP27"           "PCIP29"           "PCIP40"          
+[1] "PCIP11" "PCIP14" "PCIP15" "PCIP26" "PCIP27" "PCIP29" "PCIP40" "PCIP41"
 \end{Soutput}
 \end{Schunk}
 which respectively stand for:
@@ -93,24 +99,29 @@ These variables will help us to determine the quality of the school, and the siz
 
 \begin{Schunk}
 \begin{Soutput}
-[1] "C150_4"               "MN_EARN_WNE_INC1_P10" "MN_EARN_WNE_INC2_P10"
-[4] "MN_EARN_WNE_INC3_P10" "PCT90_EARN_WNE_P6"   
+[1] "MN_EARN_WNE_INC1_P10" "MN_EARN_WNE_INC2_P10" "MN_EARN_WNE_INC3_P10"
 \end{Soutput}
 \end{Schunk}
 
-MN\_EARN\_WNE\_INC1\_P10 = ``lowest income tercile \$0 - \$30,000" - low tier \newline
-MN\_EARN\_WNE\_INC2\_P10 $=$ ``middle income tercile \$30,001 - \$75,000" - middle tier \newline
-MN\_EARN\_WNE\_INC3\_P10 $=$ ``highest income tercile \$75,001  " - top tier \newline
+MN\_EARN\_WNE\_INC1\_P10 = ``lowest income tercile \$0-\$30,000" - low tier \newline
+MN\_EARN\_WNE\_INC2\_P10 = ``middle income tercile \$30,001-\$75,000" - middle tier \newline
+MN\_EARN\_WNE\_INC3\_P10 = ``highest income tercile \$75,001  " - top tier \newline
 
 These categories will be used in our regression-models to help us determine the top schools as well as the visualizations created.
 
 Once we have properly subsetted our dataset, it was necessary to clean it in order to be properly used.  In particular, all of the PCIP columns that contained the value 0 was replaced by NA.  We then needed to take out only the schools that were a 4 year institution, 
 \begin{Schunk}
 \begin{Soutput}
-[1] "PCT90_EARN_WNE_P6"
+[1] "ICLEVEL"
 \end{Soutput}
 \end{Schunk}
-
+in this dataset, this column is categorical: 
+  \begin{flushleft}
+  1 = 4-year institution \newline
+  2 = 2-year institution \newline
+  3 = less than 2-year institution \newline
+  \end{flushleft}
+  For our analysis, the only schools our client should be interested in are top 4-year institutions.  So we subsetted our data set appropriately.
 
 \section{Methodology}
 
