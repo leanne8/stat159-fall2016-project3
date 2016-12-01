@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{graphicx}
 \begin{document}
 
 \title{Report}
@@ -16,6 +17,7 @@ topschools <- read.csv("~/pandoc-test/stat159/stat159-fall2016-project3/data/top
 test_set <- read.csv('~/pandoc-test/Stat159/stat159-fall2016-project3/data/test-set.csv')
 train_set <- read.csv('~/pandoc-test/Stat159/stat159-fall2016-project3/data/train-set.csv')
 CSC10_11 <- read.csv('~/pandoc-test/Stat159/stat159-fall2016-project3/data/CSC10_11.csv')
+load('~/pandoc-test/Stat159/stat159-fall2016-project3/data/multiple-linear-reg.RData')
 library(xtable)
 @
 
@@ -92,11 +94,11 @@ These variables will help us to determine the quality of the school, and the siz
 <<r, echo=F>>= 
 colnames(CSC10_11)[19:21] 
 @ 
-
+\begin{flushleft}
 MN\_EARN\_WNE\_INC1\_P10 = ``lowest income tercile \$0-\$30,000" - low tier \newline
 MN\_EARN\_WNE\_INC2\_P10 = ``middle income tercile \$30,001-\$75,000" - middle tier \newline
 MN\_EARN\_WNE\_INC3\_P10 = ``highest income tercile \$75,001  " - top tier \newline
-
+\end{flushleft}
 These categories will be used in our regression-models to help us determine the top schools as well as the visualizations created.
 
 Once we have properly subsetted our dataset, it was necessary to clean it in order to be properly used.  In particular, all of the PCIP columns that contained the value 0 was replaced by NA.  We then needed to take out only the schools that were a 4 year institution, 
@@ -113,9 +115,145 @@ in this dataset, this column is categorical:
 
 \section{Methodology}
 
+We used regression analyses in this project because we wanted to determine if average earnings after graduation is dependent on the school's level of difficulty.  
+We picked 3 different regression analyses to find out which model fits our data the best.  
+The 3 regressions of choice are: multiple linear regression, ridge regression and random forest.   
+In our regressions, the independent variables are: math SAT \& ACT scores (SATMT75 \& ACTMT75), admission rate (ADM\_RATE) and graduation rate (COMP\_ORIG\_YR4\_RT).  These factors will help us to predict our 
+response variable, highest earnings 10 after graduation (MN\_EARN\_WNE\_INC3\_P10).  We have also gone through to analyze the the same regressions with the response variable being the other 2 categories of middle and lowest earnings (MN\_EARN\_WNE\_INC2\_P10, MN\_EARN\_WNE\_INC1\_P10).  
+
+We used multiple linear regression to provide a basic analysis to look at how the predictor variables independently affect the response variable.  
+While multiple linear regression is a good start, it is most likely that the predictor variables are not independent.  For that case, ridge regression is a better model.  This is because our predictor variables are collinear.  
+After comparing the results between multiple linear regression and ridge regression, we use random forest to predict the future earnings of high achieving students.  The random forest method is a good fit for our case because it is more robust to multi-collinearities. 
+
+
+\subsection{Overview of Regression Models}
+
+\underline{Multiple Linear Regression} \newline
+The goal of multiple linear regression is to see how our response variable changes when it is dependent on other variables.  These variables are assumed to be invariant from each other so we can look at how the response variables changes when only one predictor variables changes at a time, keeping the other variables constant.  The multiple linear regression model is given by:
+
+$$\hat Y = \hat \beta_0 + \hat \beta_1 X_1 + \hat \beta_2 X_2 + \dots + \hat \beta_p X_p + \hat \epsilon$$
+
+Where the betas are the effective increase in Y with a unit increase in $X_i$, holding the other variables fixed.  
+The goals is to find the estimates of $\beta_i$ by using $\hat \beta_i$ and use the ANOVA analysis to determine which variables are significant to predicting the response variable.
+\newline
+\newline
+\underline{Ridge Regression}\newline
+Ridge regression is similar to OLS with the coefficients estimated by minimizing a slightly different quantity.  By minimizing RSS, we can find the coefficient estimates that fit the data well. 
+
+$$\sum_{i=1}^{n}(y_i-\beta_0-\sum_{j=1}^{p}\beta_jx_{ij})^2+\lambda\sum_{j=1}^{p}\beta_j^2 = RSS + \lambda\sum_{j=1}^{p}\beta_j^{2}$$ 
+
+However, the shrinkage penalty is that $\lambda\sum_{j=1}^{p}\beta_j^{2}$ is small when $\beta$ are close to zero. Ridge regression will produce a different set of coefficient estimates for each value of $\lambda$ .
+\newline
+\newline
+\underline{Random Forest}\newline
+Random forest is another regression method that constructs many ''decision trees`` on the training data, more of a machine learning bootstrap.  Decision trees partition the data one variable at a time to decrease the residual sum of squares. 
+
+Random forest also outputs 2 additional measurements:
+\begin{itemize}
+\item Variable importance: this is essence, ranks the variables of greatest importance (done by looking at how much the error value changes when you only change the independent variable, keeping the other variables constant)
+\item Neighbor proximity: this is used to determine the ''structure`` of the data
+\end{itemize}
+
+$$\hat y =  \sum_{i=1}^{n} \left(\frac{1}{m} \sum_{i=1}^{m} (W_j(x_i,x')\right)y_i$$
+
+Here, W is a weight function that takes the new point $x'$ and weights it relative to a neighbor point, $x_i$.  Altogether, these predict the new $\hat y$.
+
+
+
 \section{Analysis}
 
+\textbf{Multiple Linear Regression}\newline
+<<echo=F, results=tex>>=
+
+R_squared_summary <- c(TopLMsum, MidLMsum, LowLMsum)
+R_squared_summary <- as.data.frame(R_squared_summary)
+print(xtable(R_squared_summary, digits=7), include.rownames=F)
+@
+The chart above shows the r-squared when comparing our predictors against earning after graduation in three tiers. The r-squared in this class is similar for top and middle tiers. However, if we compared the r-squared with just top and bottom tiers, we can see that top tier of 
+<<toptier, echo=T>>=
+TopLMsum
+@
+is performing better than 
+<<lowtier, echo=T>>=
+LowLMsum
+@
+
+
+<<MSE, echo=F, results=tex>>=
+MSE_summary <- c(TopMSE, MidMSE, LowMSE)
+MSE_summary <- as.data.frame(MSE_summary)
+print(xtable(MSE_summary, digits=7), include.rownames=F)
+@
+Again, this MSE chart also have values that are similar within different tiers. However, low tier is still performing worse than the top and middle tiers. Since low tier has the highest MSE of 
+<<lowMSE,echo=TRUE>>=
+LowMSE
+@
+it has more errors from the data than the other tiers. 
+
+
+The reason of top tier and middle tier are very close to each other is because of the large range of middle tier. For middle tier, students' earning after graduation is between \$30,001-\$75,000. Many STEM and non-STEM students can fall into this tier because this bracket is the average earning after graduation for most schools in the United States.  
+
+<<Coef, echo=T>>=
+TopCoef
+MidCoef
+LowCoef
+@
+
+First, let look at the coefficient in the top tier.  We can see that there is a positive relationship effect for SAT math, ACT and graduation rate against top tier of earning.  For every standard deviation of SAT math score increases, there is an increase in 
+<<>>=
+TopCoef['SATMT75']
+@
+standard deviation increase in top tier earning. From the coefficients, we can also see that the admission rate and pell grant recipient have a negative relationship against top tier earning.  For every standard deviation of admission rate increases, there is a decrease in top tier earning.  The negative relationship make sense because schools higher admission rate will not result in higher earning.  Since we are only looking at students who perform well in SAT math and ACT scores, they are more likely to admit into more selective schools, resulting in lower admission rate. When we look at the negative relationship for the pell grant recipient, we also see a negative relationship.  For every standard deviation increase in pell grant recipient, there is a decrease in earning. 
+When we compare the coefficient in the low tier, we can see that SAT math and ACT score still makes a positive effect on earning. However, there is a slight decrease in pell grant and graduation rate.  It shows that there is less increase in earning for each standard deviation of increase in graduation rate. 
+\newline
+\newline
+
+\textbf{Ridge Regression}\newline
+<<loaddata,echo=F>>=
+load("~/pandoc-test/stat159/stat159-fall2016-project3/data/rigde-reg.RData")
+load("~/pandoc-test/stat159/stat159-fall2016-project3/data/rigde1-reg.RData")
+load("~/pandoc-test/stat159/stat159-fall2016-project3/data/rigde2-reg.RData")
+@
+<<MSE, echo=F, results=tex>>=
+MSE <- c(full_mse_ridge, full_mse_ridge2, full_mse_ridge1)
+MSE <- as.data.frame(MSE)
+print(xtable(MSE, digits=7), include.rownames=F)
+@
+Since there is no r-squared in ridge regression, we can compare the MSE from ridge regression with multiple linear regression. We can see that the MSE in ridge regression are fairly close to the multiple linear regression. 
+
+
+<<coef, echo=F, results=tex>>=
+#coef <- c(coeff_ridge, coeff_ridge2, coeff__ridge1)
+#coef <- as.data.frame(coeff_ridge,coeff_ridge2, coeff_ridge1)
+#print(xtable(coef, digits=7), include.rownames=F)
+@
+When we compare the ridge coefficients with multiple linear regression coefficients, it shows a larger positive relationship between SAT math/ACT scores with earning. For every standard deviation increase in SAT math/ACT, there is a higher increase in standard deviation of earning. Ridge regression coefficient also show a negative relationship between admission rate and pell grant recipient against high earning.
+\newline
+\newline
+
+\textbf{Random Forest} \newline
+After comparing the coefficients, r-squared and MSE from multiple linear regression and ridge regression, we used random forest to predict earnings. 
+<<loadRFdata, echo=F>>=
+load("~/pandoc-test/stat159/stat159-fall2016-project3/data/random-forest-low.RData")
+load("~/pandoc-test/stat159/stat159-fall2016-project3/data/random-forest-mid.RData")
+load("~/pandoc-test/stat159/stat159-fall2016-project3/data/random-forest-top.RData")
+@
+
+<<varplot,echo=F,results=tex>>=
+xtable(varplot,digits=7)
+@
+
+
+
+
 \section{Results}
+
+\textbf{Multiple Linear Regression}\newline
+
+\includegraphics{images/lm_low.png}
+
+From the plots above, we can see that we could fit the multiple linear regression model in our case. 
+
 
 \section{Conclusions}
 
