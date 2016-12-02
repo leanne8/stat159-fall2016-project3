@@ -2,6 +2,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{float}
 \graphicspath{~/pandoc-test/Stat159/stat159-fall2016-project3}
 \begin{document}
 
@@ -271,20 +272,22 @@ xtable(varplot,digits=7)
 
 \textbf{Multiple Linear Regression}\newline
 
-\begin{figure}[h!]
-\includegraphics{../images/lm_top.png}
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{../images/lm_top.png}
 \end{figure}
 
 
 \textbf{Ridge Regression} \newline
-\begin{figure}[h!]
-\includegraphics{../images/ridgeCV_top.png}
+
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/ridgeCV_top.png}
 \end{figure}
 
 
 \textbf{Random Forest}\newline
-\begin{figure}[h!]
-\includegraphics{../images/rf_top.png}
+
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/rf_top.png}
 \end{figure}
 The plot shows that the error become more stable after 50 decision trees.
 
@@ -293,46 +296,46 @@ The plot shows that the error become more stable after 50 decision trees.
 There is a positive relationship for high graduation rate, SAT math and ACT scores, which leads to an increase in mean earnings after graduation.  There is also a negative relationship for lower admission rate and pell grant recipients.  Schools that are more selective accept less students; so from our findings, an increase in admission rate would harm the mean earnings.  In addition, pell grant recipients usually come from below average family backgrounds, which lead to less earnings after graduation. 
 
 
-\begin{figure}[h!]
-\includegraphics{../images/college-frequency.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/college-frequency.png}
 \end{figure}
 In this plot, we can see most top schools come from California. 
 
 
 Then, we determine the biggest programs from these top schools according to the major. 
 Biology 
-\begin{figure}[h!]
-\includegraphics{../images/biggestBio.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestBio.png}
 \end{figure}
 
 
 Computer Science
-\begin{figure}[h!]
-\includegraphics{../images/biggestCS.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestCS.png}
 \end{figure}
 
 
 Engineering
-\begin{figure}[h!]
-\includegraphics{../images/biggestEngineering.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestEngineering.png}
 \end{figure}
 
 
 Math/Statistics
-\begin{figure}[h!]
-\includegraphics{../images/biggestMathStat.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestMathStat.png}
 \end{figure}
 
 
 Technicians
-\begin{figure}[h!]
-\includegraphics{../images/biggestTechnicians.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestTechnicians.png}
 \end{figure}
 
 
 Physical Science 
-\begin{figure}[h!]
-\includegraphics{../images/biggestPhysical.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestPhysical.png}
 \end{figure}
 
 
