@@ -2,6 +2,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{float}
 \graphicspath{~/pandoc-test/Stat159/stat159-fall2016-project3}
 \usepackage{Sweave}
 \begin{document}
@@ -180,7 +181,7 @@ Here, W is a weight function that takes the new point $x'$ and weights it relati
 
 \textbf{Multiple Linear Regression}\newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:10 2016
+% Thu Dec 01 23:26:28 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{r}
@@ -214,7 +215,7 @@ is performing better than
 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:10 2016
+% Thu Dec 01 23:26:28 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{r}
@@ -289,7 +290,7 @@ When we compare the coefficient in the low tier, we can see that SAT math and AC
 
 \textbf{Ridge Regression}\newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:10 2016
+% Thu Dec 01 23:26:28 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -307,7 +308,7 @@ Top Tier Earnings & 0.3974380 \\
 
   The following data are the coefficients of each tier earning generated from the ridge regression.  The order of the tables are as follows: Top Tier Earnings, Middle Tier Earnings, Lowest Tier Earnings \newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -323,7 +324,7 @@ Intercept & 0.0000000 \\
    \hline
 \end{tabular}
 \end{table}% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -339,7 +340,7 @@ Intercept & 0.00 \\
    \hline
 \end{tabular}
 \end{table}% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -363,7 +364,7 @@ Intercept & 0.00 \\
   After comparing the coefficients, r-squared and MSE values from multiple linear regression and ridge regression, we used random forest to predict earnings. 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:31 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -385,22 +386,24 @@ SATMT75 & 20.1190023 \\
 
 \textbf{Multiple Linear Regression}\newline
 
-\begin{figure}[h!]
-\includegraphics{../images/lm_top.png}
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{../images/lm_top.png}
 \end{figure}
 
 \clearpage
 
 \textbf{Ridge Regression} \newline
-\begin{figure}[h!]
-\includegraphics{../images/ridgeCV_top.png}
+
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/ridgeCV_top.png}
 \end{figure}
 
 \clearpage
 
 \textbf{Random Forest}\newline
-\begin{figure}[h!]
-\includegraphics{../images/rf_top.png}
+
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/rf_top.png}
 \end{figure}
 The plot shows that the error become more stable after 50 decision trees.
 
@@ -409,12 +412,13 @@ There is a positive relationship for high graduation rate, SAT math and ACT scor
 
 \clearpage
 
-\begin{figure}[h!]
-\includegraphics{../images/college-frequency.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/college-frequency.png}
 \end{figure}
 In this plot, we can see most top schools come from California. 
 
 \clearpage
+
 
 The following graphs are divided according to subject or major category.  They depict the schools with the biggest respective programs.  For example, the first graph decpicts the ``Top 10 Biggest Bio/Biomedical Programs''.  In this chart, UC San Diego is the largest bio program in the country with a whopping
 \begin{Schunk}
@@ -422,9 +426,9 @@ The following graphs are divided according to subject or major category.  They d
 [1] 0.2294
 \end{Soutput}
 \end{Schunk}
-portion of the student population that graduate from this school with a bio/biomedical degree.
+portion of the student population graduate from this school with a bio/biomedical degree.
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:31 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -443,15 +447,17 @@ portion of the student population that graduate from this school with a bio/biom
   10 & University of the Pacific & 0.1360 \\ 
    \hline
 \end{tabular}
-\end{table}\begin{figure}[h!]
-\includegraphics{../images/biggestBio.png}
+\end{table}Then, we determine the biggest programs from these top schools according to the major. 
+Biology 
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestBio.png}
 \end{figure}
 
 \clearpage
 
 Computer Science
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:31 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -471,15 +477,15 @@ Computer Science
    \hline
 \end{tabular}
 \end{table}
-\begin{figure}[h!]
-\includegraphics{../images/biggestCS.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestCS.png}
 \end{figure}
 
 \clearpage
 
 Engineering
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:31 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -499,15 +505,15 @@ Engineering
    \hline
 \end{tabular}
 \end{table}
-\begin{figure}[h!]
-\includegraphics{../images/biggestEngineering.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestEngineering.png}
 \end{figure}
 
 \clearpage
 
 Math/Statistics
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:31 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -527,15 +533,14 @@ Math/Statistics
    \hline
 \end{tabular}
 \end{table}
-\begin{figure}[h!]
-\includegraphics{../images/biggestMathStat.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestMathStat.png}
 \end{figure}
 
 \clearpage
 
-Technicians
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:31 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -547,15 +552,15 @@ Technicians
    \hline
 \end{tabular}
 \end{table}
-\begin{figure}[h!]
-\includegraphics{../images/biggestTechnicians.png}
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestTechnicians.png}
 \end{figure}
 
 \clearpage
 
 Physical Science 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 23:15:11 2016
+% Thu Dec 01 23:26:31 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -575,8 +580,10 @@ Physical Science
    \hline
 \end{tabular}
 \end{table}
-\begin{figure}[h!]
-\includegraphics{../images/biggestPhysical.png}
+
+\begin{figure}[H]
+\includegraphics[width=0.7\textwidth]{../images/biggestPhysical.png}
+>>>>>>> 767472be9b1aae21f1986f4832dd8a84f4a6f038
 \end{figure}
 
 
