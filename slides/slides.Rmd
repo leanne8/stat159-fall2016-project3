@@ -7,15 +7,11 @@ This project focuses on providing our client from the biotech industry with the 
 
 #Introduction
 The purpose of this research is to find the schools that contain high achieving students in the fields of Science, Technology, Engineering and Mathematics (STEM). In order to determine the top schools in the country, we consider:
--1. Data cleaning. Set restrictions on what describes the quality of a school. Consists of average SAT math and ACT scores and school’s admission rate. 
-  * Higher average test scores imply that the students at that school are better achieving than students of schools with lower average test scores. 
-  * Schools with lower admission rate imply that the school is much harder to get into, opposed to a school with a higher admission rate.
+-1. Data cleaning. Set restrictions on what describes the quality of a school. Consists of average SAT math and ACT scores and school’s admission rate. Higher average test scores imply that the students at that school are better achieving than students of schools with lower average test scores. Schools with lower admission rate imply that the school is much harder to get into, opposed to a school with a higher admission rate.
 -2. Find the percentage of students who received a 4 year degree in STEM fields. 
 -3. Narrow our search to look for specific criterion of interest. See if students who received pell-grant with high SAT math/ACT scores attend more selective schools, which have a low admission rate and higher graduation rate. This directly affects our dependent variable of earnings, since it leads to higher earnings. 
--4. To complete project effectively and accurately in terms of comparing our data, we chose to use multiple linear regression, ridge regression, and random forest to fit our data against different tiers of earnings. 
-  * Reason: collinearities. 
--5. Our predictors: SAT math and ACT scores, the admission, graduation rate after the 4 years of attendance in a higher institution and pell grant recipients. 
-  * Finally our dependent variable consists of earnings 10 years after graduation in different tiers.
+-4. To complete project effectively and accurately in terms of comparing our data, we chose to use multiple linear regression, ridge regression, and random forest to fit our data against different tiers of earnings. Reason: collinearities. 
+-5. Our predictors: SAT math and ACT scores, the admission, graduation rate after the 4 years of attendance in a higher institution and pell grant recipient. Finally our dependent variable consists of earnings 10 years after graduation in different tiers.
 
 
 #Dataset
