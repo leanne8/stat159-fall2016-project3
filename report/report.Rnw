@@ -276,6 +276,7 @@ xtable(varplot,digits=7)
 \includegraphics[width=1\textwidth]{../images/lm_top.png}
 \end{figure}
 
+\clearpage
 
 \textbf{Ridge Regression} \newline
 
@@ -283,6 +284,7 @@ xtable(varplot,digits=7)
 \includegraphics[width=0.7\textwidth]{../images/ridgeCV_top.png}
 \end{figure}
 
+\clearpage
 
 \textbf{Random Forest}\newline
 
@@ -292,54 +294,91 @@ xtable(varplot,digits=7)
 The plot shows that the error become more stable after 50 decision trees.
 
 
-
 There is a positive relationship for high graduation rate, SAT math and ACT scores, which leads to an increase in mean earnings after graduation.  There is also a negative relationship for lower admission rate and pell grant recipients.  Schools that are more selective accept less students; so from our findings, an increase in admission rate would harm the mean earnings.  In addition, pell grant recipients usually come from below average family backgrounds, which lead to less earnings after graduation. 
 
+\clearpage
 
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/college-frequency.png}
 \end{figure}
 In this plot, we can see most top schools come from California. 
 
+\clearpage
 
-Then, we determine the biggest programs from these top schools according to the major. 
-Biology 
+
+The following graphs are divided according to subject or major category.  They depict the schools with the biggest respective programs.  For example, the first graph decpicts the ``Top 10 Biggest Bio/Biomedical Programs''.  In this chart, UC San Diego is the largest bio program in the country with a whopping
+<<PCIP, echo=F>>=
+load('../data/PCIP.RData')
+bio[1,2]
+@
+portion of the student population graduate from this school with a bio/biomedical degree.  Then, we determine the biggest programs from these top schools according to the major. \newline
+Biology
+<<bio, echo=F, results=tex>>=
+xtable(bio, digits=4)
+@
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/biggestBio.png}
 \end{figure}
 
+\clearpage
 
 Computer Science
+<<CS, echo=F, results=tex>>=
+xtable(CS, digits=4)
+@
+
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/biggestCS.png}
 \end{figure}
 
+\clearpage
 
 Engineering
+<<engineering, echo=F, results=tex>>=
+xtable(engineering, digits=4)
+@
+
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/biggestEngineering.png}
 \end{figure}
 
+\clearpage
 
 Math/Statistics
+<<mathstats, echo=F, results=tex>>=
+xtable(mathstats, digits=4)
+@
+
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/biggestMathStat.png}
 \end{figure}
 
+\clearpage
 
-Technicians
+<<technicians, echo=F, results=tex>>=
+xtable(technicians, digits=4)
+@
+
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/biggestTechnicians.png}
 \end{figure}
 
+\clearpage
 
 Physical Science 
+<<physical, echo=F,results=tex>>=
+xtable(physical, digits=4)
+@
+
+
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/biggestPhysical.png}
 \end{figure}
 
 
 A tech company can easily find which school produces high achieving students with a large program according to the major. 
+
+\clearpage
 
 \section{Conclusions}
 
