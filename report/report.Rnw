@@ -25,18 +25,23 @@ library(xtable)
 
 \section{Abstract}
 
-This project focuses on providing our client from the Biotech Industry with the most qualified applicant who fulfill their criterias of recruitment. Though at first we'd have to go through all individuals, the talent would only be restricted to women who are very high-achieving in STEM fields, while excluding the male gender. To determine the bar for the applicants' ranking, we would have to focus on the use of College ScoreCard dataset. Since our dependent variable would be earning, the rest would be independent variables. To achieve the final process of data cleaning, we need to filter out the top schools using SAT math and ACT scores, since they are standard elements of admission process. Then we would have to consider the relationship between admission rate and graduation rate, while taking into account the SAT math and ACT scores and observe how they affect the future earnings.
-
+  This project focuses on providing our client from the biotech industry with the most qualified schools who fulfill their criterias of recruitment.  To determine the best scshools for our client, we need to set a bar on what determines a ''top school``.  To achieve this, we will focus on the use of College ScoreCard dataset.  To determine which schools contain the highest achieving biotech students, we have set our dependent variable to be earnings after graduation.  We will then look at how our other independent variables influence the earnings. 
 
 \section{Introduction}
 
-The purpose of this research is to find high achieving students in the fields of Science, Technology, Engineering and Mathematics. To achieve this, we first look at the SAT math and ACT scores and consider only the ones with at least one standard deviation above, since we have to set a minimum score to categorize the high achieving students that the companies are looking for. After this step, it is easy to filter out schools in terms of their admission rate criteria. Based on our data analysis, we can easily see that students who received pell grant with high SAT math/ACT scores attend more selective schools, which have a low admission rate and higher graduation rate. This directly affects our dependent variable of earnings, since it leads to higher earnings. 
-After our data cleaning process, we focus particularly on these top schools that remain after our filter and we have to figure out the percentage of students who received a 4 year degree in STEM fields, such as BioEngineering, Engineering, Mathematics, Statistics and others. For the completion of this project and to have an effective and accurate comparison of our data, we chose to use three different kinds of regression models that we learned throughout the semester. We used ridge regression, random forest and multiple linear regression to fit our data against different tiers of earnings. The reason we chose these regressions because of the co-linearities and to effectively compare. Our predictors include the SAT math and ACT scores, the admission, graduation rate after the 4 years of attendance in a higher institution and pell grant recipients, and finally our dependent variable which consist of earnings in different tiers. 
+  The purpose of this research is to find the schools that contain high achieving students in the fields of Science, Technology, Engineering and Mathematics (STEM).   
+In order to determine the top schools in the country, we first have to set restrictions of certain categories that describe the quality of a school.
+These ``qualities'' encompass standardized test data such as the school's average SAT math and ACT scores as well as the school's admission rate.  Higher average test scores imply that the students at that school are smarter than students of schools with lower average test scores.  Schools with lower admission rate imply that the school is much harder to get into, opposed to a school with a higher admission rate.
+To achieve this, we will look at the data of the schools and partition the schools such that we only have the ``top'' schools in the country.  
+After our data cleaning process, we focus particularly on these top schools that remain to figure out the percentage of students who received a 4 year degree in STEM fields.  
+After this step, we can narrow our search to look for specific criterion of interest.  For example, we can look to see if students who received pell-grant with high SAT math/ACT scores attend more selective schools, which have a low admission rate and higher graduation rate.  This directly affects our dependent variable of earnings, since it leads to higher earnings.  
+For the completion of this project and to have an effective and accurate comparison of our data, we chose to use three different kinds of regression models that we learned throughout the semester. 
+We used multiple linear regression, ridge regression, and random forest to fit our data against different tiers of earnings.  The reason we chose these regressions are because of the collinearities.  Our predictors include the SAT math and ACT scores, the admission, graduation rate after the 4 years of attendance in a higher institution and pell grant recipients.  Finally our dependent variable consists of earnings 10 years after graduation in different tiers.  
 
 
 \section{Dataset}
 
-We use the dataset \emph{CollegeScore Card} from \url{https://collegescorecard.ed.gov/data/}. In \emph{data-subsetting.R}, we subset 34 columns that we need for the project. We carefully examined each predictors and see which predictors fit our needs to increase the performance in analysis.  In \emph{data-cleaning.R},  there's a lot of null data and privacy suppressed data so we have to delete those rows and replace some with N/A. After cleaning the data we put them in different csv files. In the \emph{pre-processing.R} we select schools with top SAT math and ACT scores that are at least one standard deviation above average, and then we turn those columns that we need into numerics from factors. We decided on 5 predictors and 1 dependent variable out of the 34 options. Finally, we export the clean dataset into a \emph{topschool.csv}.
+  We use the dataset \emph{CollegeScore Card} from \url{https://collegescorecard.ed.gov/data/}. In \emph{data-subsetting.R}, we subset 34 columns that we need for the project. We carefully examined each predictors and see which predictors fit our needs to increase the performance in analysis.  In \emph{data-cleaning.R},  there's a lot of null data and privacy suppressed data so we have to delete those rows and replace some with N/A. After cleaning the data we put them in different csv files. In the \emph{pre-processing.R} we select schools with top SAT math and ACT scores that are at least one standard deviation above average, and then we turn those columns that we need into numerics from factors. We decided on 5 predictors and 1 dependent variable out of the 34 options. Finally, we export the clean dataset into a \emph{topschool.csv}.
 
 <<r, echo=F>>=
 colnames(CSC10_11)
@@ -55,7 +60,7 @@ which give the institution name, city, state, and zip code respectively.  In dec
 \end{enumerate}
 
 
-Among the quantitative variables, pre-admission data includes the school's 75th percentile of the math SAT and math ACT scores:
+Among the quantitative variables, pre-admission data includes the school's 75th percentile of the SAT math and ACT scores:
 <<r, echo=F>>= 
 colnames(CSC10_11)[7:8] 
 @  
@@ -84,7 +89,7 @@ PCIP40 = physical sciences \newline
 PCIP41 = science technologies/technicians \newline
 \end{flushleft}
 \end{center}
-These variables will help us to determine the quality of the school, and the size of each program.  Post-graduation data includes the ``mean earnings of students working and not enrolled 10 years after entry in" 3 different categorical earnings denoted:  
+  These variables will help us to determine the quality of the school, and the size of each program.  Post-graduation data includes the ``mean earnings of students working and not enrolled 10 years after entry in" 3 different categorical earnings denoted:  
 
 <<r, echo=F>>= 
 colnames(CSC10_11)[19:21] 
@@ -96,7 +101,7 @@ MN\_EARN\_WNE\_INC3\_P10 = ``highest income tercile \$75,001  " - top tier \newl
 \end{flushleft}
 These categories will be used in our regression-models to help us determine the top schools as well as the visualizations created.
 
-Once we have properly subsetted our dataset, it was necessary to clean it in order to be properly used.  In particular, all of the PCIP columns that contained the value 0 was replaced by NA.  We then needed to take out only the schools that were a 4 year institution, 
+  Once we have properly subsetted our dataset, it was necessary to clean it in order to be  properly used.  In particular, all of the PCIP columns that contained the value 0 was replaced by NA.  We then needed to take out only the schools that were a 4 year institution, 
 <<r, echo=F>>= 
 colnames(CSC10_11)[23] 
 @
@@ -110,20 +115,20 @@ in this dataset, this column is categorical:
 
 \section{Methodology}
 
-We used regression analyses in this project because we wanted to determine if average earnings after graduation is dependent on the school's level of difficulty.  
+  We used regression analyses in this project because we wanted to determine if average earnings after graduation is dependent on the school's level of difficulty.  
 We picked 3 different regression analyses to find out which model fits our data the best.  
 The 3 regressions of choice are: multiple linear regression, ridge regression and random forest.   
-In our regressions, the independent variables are: math SAT \& ACT scores (SATMT75 \& ACTMT75), admission rate (ADM\_RATE) and graduation rate (COMP\_ORIG\_YR4\_RT).  These factors will help us to predict our 
+In our regressions, the independent variables are: SAT  math \& ACT scores (SATMT75 \& ACTMT75), admission rate (ADM\_RATE) and graduation rate (COMP\_ORIG\_YR4\_RT).  These factors will help us to predict our 
 response variable, highest earnings 10 after graduation (MN\_EARN\_WNE\_INC3\_P10).  We have also gone through to analyze the the same regressions with the response variable being the other 2 categories of middle and lowest earnings (MN\_EARN\_WNE\_INC2\_P10, MN\_EARN\_WNE\_INC1\_P10).  
 
-We used multiple linear regression to provide a basic analysis to look at how the predictor variables independently affect the response variable.  
+  We used multiple linear regression to provide a basic analysis to look at how the predictor variables independently affect the response variable.  
 While multiple linear regression is a good start, it is most likely that the predictor variables are not independent.  For that case, ridge regression is a better model.  This is because our predictor variables are collinear.  
 After comparing the results between multiple linear regression and ridge regression, we use random forest to predict the future earnings of high achieving students.  The random forest method is a good fit for our case because it is more robust to multi-collinearities. 
 
 
 \subsection{Overview of Regression Models}
 
-\underline{Multiple Linear Regression} \newline
+\textbf{Multiple Linear Regression} \newline
 The goal of multiple linear regression is to see how our response variable changes when it is dependent on other variables.  These variables are assumed to be invariant from each other so we can look at how the response variables changes when only one predictor variables changes at a time, keeping the other variables constant.  The multiple linear regression model is given by:
 
 $$\hat Y = \hat \beta_0 + \hat \beta_1 X_1 + \hat \beta_2 X_2 + \dots + \hat \beta_p X_p + \hat \epsilon$$
@@ -132,7 +137,7 @@ Where the betas are the effective increase in Y with a unit increase in $X_i$, h
 The goals is to find the estimates of $\beta_i$ by using $\hat \beta_i$ and use the ANOVA analysis to determine which variables are significant to predicting the response variable.
 \newline
 \newline
-\underline{Ridge Regression}\newline
+\textbf{Ridge Regression}\newline
 Ridge regression is similar to OLS with the coefficients estimated by minimizing a slightly different quantity.  By minimizing RSS, we can find the coefficient estimates that fit the data well. 
 
 $$\sum_{i=1}^{n}(y_i-\beta_0-\sum_{j=1}^{p}\beta_jx_{ij})^2+\lambda\sum_{j=1}^{p}\beta_j^2 = RSS + \lambda\sum_{j=1}^{p}\beta_j^{2}$$ 
@@ -140,7 +145,7 @@ $$\sum_{i=1}^{n}(y_i-\beta_0-\sum_{j=1}^{p}\beta_jx_{ij})^2+\lambda\sum_{j=1}^{p
 However, the shrinkage penalty is that $\lambda\sum_{j=1}^{p}\beta_j^{2}$ is small when $\beta$ are close to zero. Ridge regression will produce a different set of coefficient estimates for each value of $\lambda$ .
 \newline
 \newline
-\underline{Random Forest}\newline
+\textbf{Random Forest}\newline
 Random forest is another regression method that constructs many ''decision trees`` on the training data, more of a machine learning bootstrap.  Decision trees partition the data one variable at a time to decrease the residual sum of squares. 
 
 Random forest also outputs 2 additional measurements:
@@ -164,7 +169,8 @@ R_squared_summary <- c(TopLMsum, MidLMsum, LowLMsum)
 R_squared_summary <- as.data.frame(R_squared_summary)
 print(xtable(R_squared_summary, digits=7), include.rownames=F)
 @
-The chart above shows the r-squared when comparing our predictors against earning after graduation in three tiers. The r-squared in this class is similar for top and middle tiers. However, if we compared the r-squared with just top and bottom tiers, we can see that top tier of 
+\newline
+  The chart above shows the r-squared when comparing our predictors against earning after graduation in three tiers. The r-squared in this class is similar for top and middle tiers.  However, if we compared the r-squared with just top and bottom tiers, we can see that top tier of 
 <<toptier, echo=T>>=
 TopLMsum
 @
@@ -186,20 +192,22 @@ LowMSE
 it has more errors from the data than the other tiers. 
 
 
-The reason of top tier and middle tier are very close to each other is because of the large range of middle tier. For middle tier, students' earning after graduation is between \$30,001-\$75,000. Many STEM and non-STEM students can fall into this tier because this bracket is the average earning after graduation for most schools in the United States.  
+The reason that top tier and middle tier are very close to each other is because of the large range of the middle tier. The middle tier encorperates the students' earnings after graduation, this range is between \$30,001-\$75,000. Many STEM and non-STEM students can fall into this bracket because this is the average earning after graduation for most schools in the United States.  
+\newline
 
+The following data are the coefficients of each earning bracket from the multuple linear regression:
 <<Coef, echo=T>>=
 TopCoef
 MidCoef
 LowCoef
 @
 
-First, let look at the coefficient in the top tier.  We can see that there is a positive relationship effect for SAT math, ACT and graduation rate against top tier of earning.  For every standard deviation of SAT math score increases, there is an increase in 
+First, let look at the coefficient in the top tier.  We can see that there is a positive relationship effect for SAT math, ACT and graduation rate against the top tier of earning.  For every standard deviation of SAT math score increases, there is an increase in 
 <<>>=
 TopCoef['SATMT75']
 @
-standard deviation increase in top tier earning. From the coefficients, we can also see that the admission rate and pell grant recipient have a negative relationship against top tier earning.  For every standard deviation of admission rate increases, there is a decrease in top tier earning.  The negative relationship make sense because schools higher admission rate will not result in higher earning.  Since we are only looking at students who perform well in SAT math and ACT scores, they are more likely to admit into more selective schools, resulting in lower admission rate. When we look at the negative relationship for the pell grant recipient, we also see a negative relationship.  For every standard deviation increase in pell grant recipient, there is a decrease in earning. 
-When we compare the coefficient in the low tier, we can see that SAT math and ACT score still makes a positive effect on earning. However, there is a slight decrease in pell grant and graduation rate.  It shows that there is less increase in earning for each standard deviation of increase in graduation rate. 
+standard deviation increase in top tier earning. From the coefficients, we can also see that the admission rate and pell grant recipient have a negative relationship against top tier earnings.  For every standard deviation (of admission rate) that increases, there is a decrease in top tier earnings.  The negative relationship makes sense because for schools with a higher admission rate, we expect it to result in lower earnings.  Since we are only looking at students who perform well in SAT math and ACT scores, these students are more likely be admitted into more selective schools, implying a lower admission rate.  When we look at the negative relationship for the pell grant recipient, we also see a negative relationship.  For every standard deviation increase in pell grant recipient, there is a decrease in earnings. 
+When we compare the coefficient in the low tier, we can see that SAT math and ACT score still makes a positive effect on earning. However, there is a slight decrease in pell grant and graduation rate.  It shows that there is a less increase in earnings for each standard deviation of increase in graduation rate. 
 \newline
 \newline
 
@@ -212,33 +220,40 @@ load("../data/rigde2-reg.RData")
 <<MSE, echo=F, results=tex>>=
 MSE <- c(full_mse_ridge, full_mse_ridge2, full_mse_ridge1)
 MSE <- as.data.frame(MSE)
-print(xtable(MSE, digits=7), include.rownames=F)
+rownames(MSE)<- c('Top Tier Earnings', 'Middle Tier Earnings','Lower Tier Earnings')
+xtable(MSE, digits=7)
 @
-Since there is no r-squared in ridge regression, we can compare the MSE from ridge regression with multiple linear regression. We can see that the MSE in ridge regression are fairly close to the multiple linear regression. 
+\newline
 
+  Since ridge regression does not have r-squared values, we can compare the MSE values from the ridge regression with the multiple linear regression.  We can see that the MSE values from ridge regression are fairly close to the MSE values from multiple linear regression. 
+
+  The following data are the coefficients of each tier earning generated from the ridge regression.  The order of the tables are as follows: Top Tier Earnings, Middle Tier Earnings, Lowest Tier Earnings \newline
 <<echo=F, results=tex>>=
+#print('Top Tier Earnings')
 coeff_ridge <- as.vector(coeff_ridge)
 coeff_ridge <- as.matrix(coeff_ridge)
 row.names(coeff_ridge)<-c("Intercept","SATMT75","ACTMT75","ADM_RATE", "COMP_ORIG_YR4_RT","PELL_COMP_ORIG_YR6_RT")
 xtable(coeff_ridge, digits=7)
 #print(xtable(coeff_ridge),sanitize.text.function=function(x){x})
 
+#print('Middle Tier Earnings')
 coeff_ridge2<-as.matrix(as.vector(coeff_ridge2))
 row.names(coeff_ridge2)<-c("Intercept","SATMT75","ACTMT75","ADM_RATE", "COMP_ORIG_YR4_RT","PELL_COMP_ORIG_YR6_RT")
 xtable(coeff_ridge2)
 #print(xtable(ridge_full_matrix2),sanitize.text.function=function(x){x})
 
+#print('Lower Tier Earnigns')
 coeff_ridge1<-as.matrix(as.vector(coeff_ridge1))
 row.names(coeff_ridge1)<-c("Intercept","SATMT75","ACTMT75","ADM_RATE", "COMP_ORIG_YR4_RT","PELL_COMP_ORIG_YR6_RT")
 xtable(coeff_ridge1)
 @
-
-When we compare the ridge coefficients with multiple linear regression coefficients, it shows a larger positive relationship between SAT math/ACT scores with earning. For every standard deviation increase in SAT math/ACT, there is a higher increase in standard deviation of earning. Ridge regression coefficient also show a negative relationship between admission rate and pell grant recipient against high earning.
+\newline
+  When we compare the ridge coefficients with multiple linear regression coefficients, it shows a larger positive relationship between SAT math/ACT scores and earnings.  For every standard deviation increase in SAT math/ACT scores, there is a higher increase in standard deviation of earnings. The ridge regression coefficient also shows a negative relationship between admission rate and pell grant recipient against high earnings.
 \newline
 \newline
 
 \textbf{Random Forest} \newline
-After comparing the coefficients, r-squared and MSE from multiple linear regression and ridge regression, we used random forest to predict earnings. 
+  After comparing the coefficients, r-squared and MSE values from multiple linear regression and ridge regression, we used random forest to predict earnings. 
 <<loadRFdata, echo=F>>=
 load("../data/random-forest-low.RData")
 load("../data/random-forest-mid.RData")
@@ -249,7 +264,7 @@ load("../data/random-forest-top.RData")
 xtable(varplot,digits=7)
 @
 
-
+  In random forest regression, we can look at the importance of the model.  It consists of ``IncNodePurity", which is the average cummulative reduction in node impurity due to splits by a variable over the trees. It is also the mean decrease in MSE.  From the variance importance, we can see that the main positive relationships are from SAT math and ACT scores, concluding an existing positive correlation with mean earnings.  From the random forest model, we can choose the best features that represent our data.  Also, the more selective schools that have a lower admission rate also play an important factor with mean earnings. 
 
 
 \section{Results}
@@ -261,20 +276,21 @@ xtable(varplot,digits=7)
 \end{figure}
 
 
-\textbf{Ridge Regression}
+\textbf{Ridge Regression} \newline
 \begin{figure}[h!]
 \includegraphics{../images/ridgeCV_top.png}
 \end{figure}
 
 
-\textbf{Random Forest}
+\textbf{Random Forest}\newline
 \begin{figure}[h!]
 \includegraphics{../images/rf_top.png}
 \end{figure}
 The plot shows that the error become more stable after 50 decision trees.
 
 
-There is a positive relationship for high graduation rate, SAT math and ACT scores, which leads to an increase in mean earning after graduation. There is also a negative relationship for lower admission rate and pell grant recipients. Schools that are more selective accepts less students. So an increase in admission rate would harm the mean earning. Also, pell grant recipients usually come from a below average family backgrounds, which lead to less earning after graduation. 
+
+There is a positive relationship for high graduation rate, SAT math and ACT scores, which leads to an increase in mean earnings after graduation.  There is also a negative relationship for lower admission rate and pell grant recipients.  Schools that are more selective accept less students; so from our findings, an increase in admission rate would harm the mean earnings.  In addition, pell grant recipients usually come from below average family backgrounds, which lead to less earnings after graduation. 
 
 
 \begin{figure}[h!]
