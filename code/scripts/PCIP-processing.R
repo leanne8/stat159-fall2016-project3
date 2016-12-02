@@ -69,7 +69,7 @@ dev.off()
 #look at the 10 schools with the biggest 'physical sciences' program
 order(topschools$PCIP40, decreasing=T)[1:5]
 physical <- topschools[order(topschools$PCIP40, decreasing=T)[1:10],c('INSTNM','PCIP40')]
-rownmaes(physical) = NULL
+rownames(physical) = NULL
 xtable(physical)
 physicalplot <- ggplot(physical, aes(x=INSTNM, y=PCIP40)) + geom_bar(stat='identity', fill='#330066') +
   theme(axis.text.x = element_text(angle = 40, hjust = 1)) + 
@@ -114,3 +114,5 @@ engineeringplot <- ggplot(engineering, aes(x=INSTNM, y=PCIP14)) + geom_bar(stat=
 png('images/biggestEngineering.png')
 engineeringplot
 dev.off()
+
+save(bio, mathstats, CS, physical, technicians, engineering, file='data/PCIP.RData')
