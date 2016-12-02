@@ -180,7 +180,7 @@ Here, W is a weight function that takes the new point $x'$ and weights it relati
 
 \textbf{Multiple Linear Regression}\newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 21:59:47 2016
+% Thu Dec 01 23:15:10 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{r}
@@ -214,7 +214,7 @@ is performing better than
 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 21:59:47 2016
+% Thu Dec 01 23:15:10 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{r}
@@ -289,7 +289,7 @@ When we compare the coefficient in the low tier, we can see that SAT math and AC
 
 \textbf{Ridge Regression}\newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 21:59:47 2016
+% Thu Dec 01 23:15:10 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -307,7 +307,7 @@ Top Tier Earnings & 0.3974380 \\
 
   The following data are the coefficients of each tier earning generated from the ridge regression.  The order of the tables are as follows: Top Tier Earnings, Middle Tier Earnings, Lowest Tier Earnings \newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 21:59:49 2016
+% Thu Dec 01 23:15:11 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -323,7 +323,7 @@ Intercept & 0.0000000 \\
    \hline
 \end{tabular}
 \end{table}% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 21:59:49 2016
+% Thu Dec 01 23:15:11 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -339,7 +339,7 @@ Intercept & 0.00 \\
    \hline
 \end{tabular}
 \end{table}% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 21:59:49 2016
+% Thu Dec 01 23:15:11 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -363,7 +363,7 @@ Intercept & 0.00 \\
   After comparing the coefficients, r-squared and MSE values from multiple linear regression and ridge regression, we used random forest to predict earnings. 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Thu Dec 01 21:59:49 2016
+% Thu Dec 01 23:15:11 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -389,12 +389,14 @@ SATMT75 & 20.1190023 \\
 \includegraphics{../images/lm_top.png}
 \end{figure}
 
+\clearpage
 
 \textbf{Ridge Regression} \newline
 \begin{figure}[h!]
 \includegraphics{../images/ridgeCV_top.png}
 \end{figure}
 
+\clearpage
 
 \textbf{Random Forest}\newline
 \begin{figure}[h!]
@@ -403,54 +405,184 @@ SATMT75 & 20.1190023 \\
 The plot shows that the error become more stable after 50 decision trees.
 
 
-
 There is a positive relationship for high graduation rate, SAT math and ACT scores, which leads to an increase in mean earnings after graduation.  There is also a negative relationship for lower admission rate and pell grant recipients.  Schools that are more selective accept less students; so from our findings, an increase in admission rate would harm the mean earnings.  In addition, pell grant recipients usually come from below average family backgrounds, which lead to less earnings after graduation. 
 
+\clearpage
 
 \begin{figure}[h!]
 \includegraphics{../images/college-frequency.png}
 \end{figure}
 In this plot, we can see most top schools come from California. 
 
+\clearpage
 
-Then, we determine the biggest programs from these top schools according to the major. 
-Biology 
-\begin{figure}[h!]
+The following graphs are divided according to subject or major category.  They depict the schools with the biggest respective programs.  For example, the first graph decpicts the ``Top 10 Biggest Bio/Biomedical Programs''.  In this chart, UC San Diego is the largest bio program in the country with a whopping
+\begin{Schunk}
+\begin{Soutput}
+[1] 0.2294
+\end{Soutput}
+\end{Schunk}
+portion of the student population that graduate from this school with a bio/biomedical degree.
+% latex table generated in R 3.3.1 by xtable 1.8-2 package
+% Thu Dec 01 23:15:11 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlr}
+  \hline
+ & INSTNM & PCIP26 \\ 
+  \hline
+1 & University of California-San Diego & 0.2294 \\ 
+  2 & University of California-Davis & 0.2004 \\ 
+  3 & Hendrix College & 0.1942 \\ 
+  4 & Union College & 0.1855 \\ 
+  5 & Colorado College & 0.1582 \\ 
+  6 & University of California-Irvine & 0.1554 \\ 
+  7 & University of California-Los Angeles & 0.1549 \\ 
+  8 & St Olaf College & 0.1497 \\ 
+  9 & University of Miami & 0.1420 \\ 
+  10 & University of the Pacific & 0.1360 \\ 
+   \hline
+\end{tabular}
+\end{table}\begin{figure}[h!]
 \includegraphics{../images/biggestBio.png}
 \end{figure}
 
+\clearpage
 
 Computer Science
+% latex table generated in R 3.3.1 by xtable 1.8-2 package
+% Thu Dec 01 23:15:11 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlr}
+  \hline
+ & INSTNM & PCIP11 \\ 
+  \hline
+1 & Polytechnic Institute of New York University & 0.1630 \\ 
+  2 & New Jersey Institute of Technology & 0.1619 \\ 
+  3 & Massachusetts Institute of Technology & 0.1563 \\ 
+  4 & Carnegie Mellon University & 0.1159 \\ 
+  5 & Illinois Institute of Technology & 0.0888 \\ 
+  6 & Stanford University & 0.0834 \\ 
+  7 & South Dakota School of Mines and Technology & 0.0760 \\ 
+  8 & Missouri University of Science and Technology & 0.0714 \\ 
+  9 & Rose-Hulman Institute of Technology & 0.0700 \\ 
+  10 & Drexel University & 0.0633 \\ 
+   \hline
+\end{tabular}
+\end{table}
 \begin{figure}[h!]
 \includegraphics{../images/biggestCS.png}
 \end{figure}
 
+\clearpage
 
 Engineering
+% latex table generated in R 3.3.1 by xtable 1.8-2 package
+% Thu Dec 01 23:15:11 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlr}
+  \hline
+ & INSTNM & PCIP14 \\ 
+  \hline
+1 & Colorado School of Mines & 0.8793 \\ 
+  2 & Kettering University & 0.8783 \\ 
+  3 & Rose-Hulman Institute of Technology & 0.8768 \\ 
+  4 & Milwaukee School of Engineering & 0.7639 \\ 
+  5 & Missouri University of Science and Technology & 0.7470 \\ 
+  6 & Polytechnic Institute of New York University & 0.7355 \\ 
+  7 & South Dakota School of Mines and Technology & 0.7148 \\ 
+  8 & New Mexico Institute of Mining and Technology & 0.6390 \\ 
+  9 & Clarkson University & 0.5886 \\ 
+  10 & Georgia Institute of Technology-Main Campus & 0.5788 \\ 
+   \hline
+\end{tabular}
+\end{table}
 \begin{figure}[h!]
 \includegraphics{../images/biggestEngineering.png}
 \end{figure}
 
+\clearpage
 
 Math/Statistics
+% latex table generated in R 3.3.1 by xtable 1.8-2 package
+% Thu Dec 01 23:15:11 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlr}
+  \hline
+ & INSTNM & PCIP27 \\ 
+  \hline
+1 & St Olaf College & 0.0872 \\ 
+  2 & New Mexico Institute of Mining and Technology & 0.0780 \\ 
+  3 & University of Chicago & 0.0709 \\ 
+  4 & Colorado School of Mines & 0.0693 \\ 
+  5 & Massachusetts Institute of Technology & 0.0633 \\ 
+  6 & Bryn Mawr College & 0.0621 \\ 
+  7 & Brown University & 0.0580 \\ 
+  8 & Harvard University & 0.0544 \\ 
+  9 & Carnegie Mellon University & 0.0542 \\ 
+  10 & University of Rochester & 0.0492 \\ 
+   \hline
+\end{tabular}
+\end{table}
 \begin{figure}[h!]
 \includegraphics{../images/biggestMathStat.png}
 \end{figure}
 
+\clearpage
 
 Technicians
+% latex table generated in R 3.3.1 by xtable 1.8-2 package
+% Thu Dec 01 23:15:11 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlr}
+  \hline
+ & INSTNM & PCIP41 \\ 
+  \hline
+1 & Pennsylvania State University-Main Campus & 0.0033 \\ 
+  2 & North Carolina State University at Raleigh & 0.0021 \\ 
+   \hline
+\end{tabular}
+\end{table}
 \begin{figure}[h!]
 \includegraphics{../images/biggestTechnicians.png}
 \end{figure}
 
+\clearpage
 
 Physical Science 
+% latex table generated in R 3.3.1 by xtable 1.8-2 package
+% Thu Dec 01 23:15:11 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlr}
+  \hline
+ & INSTNM & PCIP40 \\ 
+  \hline
+1 & St Olaf College & 0.1120 \\ 
+  2 & Massachusetts Institute of Technology & 0.0999 \\ 
+  3 & Furman University & 0.0984 \\ 
+  4 & New Mexico Institute of Mining and Technology & 0.0927 \\ 
+  5 & Bryn Mawr College & 0.0817 \\ 
+  6 & Florida Institute of Technology & 0.0787 \\ 
+  7 & South Dakota School of Mines and Technology & 0.0760 \\ 
+  8 & Case Western Reserve University & 0.0718 \\ 
+  9 & Hendrix College & 0.0712 \\ 
+  10 & Princeton University & 0.0705 \\ 
+   \hline
+\end{tabular}
+\end{table}
 \begin{figure}[h!]
 \includegraphics{../images/biggestPhysical.png}
 \end{figure}
 
 
 A tech company can easily find which school produces high achieving students with a large program according to the major. 
+
+\clearpage
 
 \section{Conclusions}
 

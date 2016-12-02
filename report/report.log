@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.5)  1 DEC 2016 22:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.7.5)  1 DEC 2016 23:15
 entering extended mode
 **./report.tex
 (report.tex
@@ -493,115 +493,113 @@ File: ../images/lm_top.png Graphic file (type png)
 Package pdftex.def Info: ../images/lm_top.png used on input line 389.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
 
-<../images/ridgeCV_top.png, id=93, 481.8pt x 481.8pt>
+[9 <../images/lm_top.png>]
+<../images/ridgeCV_top.png, id=98, 481.8pt x 481.8pt>
 File: ../images/ridgeCV_top.png Graphic file (type png)
 
 <use ../images/ridgeCV_top.png>
-Package pdftex.def Info: ../images/ridgeCV_top.png used on input line 395.
+Package pdftex.def Info: ../images/ridgeCV_top.png used on input line 396.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
+ [10
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../images/rf_top.png, id=94, 481.8pt x 481.8pt>
+ <../images/ridgeCV_top.png>]
+<../images/rf_top.png, id=104, 481.8pt x 481.8pt>
 File: ../images/rf_top.png Graphic file (type png)
  <use ../images/rf_top.png>
-Package pdftex.def Info: ../images/rf_top.png used on input line 401.
+Package pdftex.def Info: ../images/rf_top.png used on input line 403.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
 
+[11
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[9 <../images/lm_top.png>]
-<../images/college-frequency.png, id=100, 481.8pt x 481.8pt>
+ <../images/rf_top.png>]
+<../images/college-frequency.png, id=110, 481.8pt x 481.8pt>
 File: ../images/college-frequency.png Graphic file (type png)
 
 <use ../images/college-frequency.png>
-Package pdftex.def Info: ../images/college-frequency.png used on input line 411
+Package pdftex.def Info: ../images/college-frequency.png used on input line 413
 .
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
+ [12
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../images/biggestBio.png, id=101, 481.8pt x 481.8pt>
+ <../images/college-frequency.png>]
+<../images/biggestBio.png, id=116, 481.8pt x 481.8pt>
 File: ../images/biggestBio.png Graphic file (type png)
 
 <use ../images/biggestBio.png>
-Package pdftex.def Info: ../images/biggestBio.png used on input line 419.
+Package pdftex.def Info: ../images/biggestBio.png used on input line 447.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
 
+Overfull \hbox (24.02472pt too wide) in paragraph at lines 425--449
+\T1/aer/m/n/10 portion of the stu-dent pop-u-la-tion that grad-u-ate from this 
+school with a bio/biomedical
+ []
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+[13
 
-<../images/biggestCS.png, id=102, 481.8pt x 481.8pt>
+ <../images/biggestBio.png>]
+<../images/biggestCS.png, id=123, 481.8pt x 481.8pt>
 File: ../images/biggestCS.png Graphic file (type png)
 
 <use ../images/biggestCS.png>
-Package pdftex.def Info: ../images/biggestCS.png used on input line 425.
+Package pdftex.def Info: ../images/biggestCS.png used on input line 475.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
+ [14
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../images/biggestEngineering.png, id=103, 481.8pt x 481.8pt>
+ <../images/biggestCS.png>]
+<../images/biggestEngineering.png, id=129, 481.8pt x 481.8pt>
 File: ../images/biggestEngineering.png Graphic file (type png)
 
 <use ../images/biggestEngineering.png>
-Package pdftex.def Info: ../images/biggestEngineering.png used on input line 43
-1.
+Package pdftex.def Info: ../images/biggestEngineering.png used on input line 50
+3.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
+ [15
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../images/biggestMathStat.png, id=104, 481.8pt x 481.8pt>
+ <../images/biggestEngineering.png>]
+<../images/biggestMathStat.png, id=135, 481.8pt x 481.8pt>
 File: ../images/biggestMathStat.png Graphic file (type png)
 
 <use ../images/biggestMathStat.png>
-Package pdftex.def Info: ../images/biggestMathStat.png used on input line 437.
+Package pdftex.def Info: ../images/biggestMathStat.png used on input line 531.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
+ [16
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../images/biggestTechnicians.png, id=105, 481.8pt x 481.8pt>
+ <../images/biggestMathStat.png>]
+<../images/biggestTechnicians.png, id=141, 481.8pt x 481.8pt>
 File: ../images/biggestTechnicians.png Graphic file (type png)
 
 <use ../images/biggestTechnicians.png>
-Package pdftex.def Info: ../images/biggestTechnicians.png used on input line 44
-3.
+Package pdftex.def Info: ../images/biggestTechnicians.png used on input line 55
+1.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
+ [17
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../images/biggestPhysical.png, id=106, 481.8pt x 481.8pt>
+ <../images/biggestTechnicians.png>]
+<../images/biggestPhysical.png, id=147, 481.8pt x 481.8pt>
 File: ../images/biggestPhysical.png Graphic file (type png)
 
 <use ../images/biggestPhysical.png>
-Package pdftex.def Info: ../images/biggestPhysical.png used on input line 449.
+Package pdftex.def Info: ../images/biggestPhysical.png used on input line 579.
 (pdftex.def)             Requested size: 276.00105pt x 276.01096pt.
+ [18
 
+ <../images/biggestPhysical.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 590.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+[19
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 458.
-[10 <../images/ridgeCV_top.png>] [11 <../images/rf_top.png>] [12 <../images/col
-lege-frequency.png>] [13 <../images/biggestBio.png>] [14 <../images/biggestCS.p
-ng>] [15 <../images/biggestEngineering.png>] [16 <../images/biggestMathStat.png
->] [17 <../images/biggestTechnicians.png>] [18 <../images/biggestPhysical.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 458.
-(report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 458.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 458.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 590.
+ (report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 590.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 590.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 852A3BD165100C9679DECD2A8A935FE8;395.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 458.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 590.
  ) 
 Here is how much of TeX's memory you used:
- 6958 strings out of 493334
- 100929 string characters out of 3139253
+ 6959 strings out of 493334
+ 100936 string characters out of 3139253
  184473 words of memory out of 3000000
  10336 multiletter control sequences out of 15000+200000
  30964 words of font info for 70 fonts, out of 3000000 for 9000
@@ -623,9 +621,9 @@ iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9
 ype1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/cm-super/sfrm1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-su
 per/sfst1000.pfb>
-Output written on report.pdf (18 pages, 349263 bytes).
+Output written on report.pdf (19 pages, 336690 bytes).
 PDF statistics:
- 212 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
+ 218 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
  119 words of extra memory for PDF output out of 10000 (max. 10000000)
 
