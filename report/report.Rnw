@@ -307,7 +307,7 @@ The following graphs are divided according to subject or major category.  They d
 load('../data/PCIP.RData')
 bio[1,2]
 @
-portion of the student population that graduate from this school with a bio/biomedical degree.
+portion of the student population graduate from this school with a bio/biomedical degree.
 <<bio, echo=F, results=tex>>=
 xtable(bio, digits=4)
 @
