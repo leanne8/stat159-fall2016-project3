@@ -311,12 +311,11 @@ The following graphs are divided according to subject or major category.  They d
 load('../data/PCIP.RData')
 bio[1,2]
 @
-portion of the student population graduate from this school with a bio/biomedical degree.
+portion of the student population graduate from this school with a bio/biomedical degree.  Then, we determine the biggest programs from these top schools according to the major. \newline
+Biology
 <<bio, echo=F, results=tex>>=
 xtable(bio, digits=4)
 @
-Then, we determine the biggest programs from these top schools according to the major. 
-Biology 
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/biggestBio.png}
 \end{figure}
