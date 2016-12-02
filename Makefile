@@ -16,8 +16,8 @@ testAndTrain:  code/scripts/training-and-testing.R
 	Rscript code/scripts/training-and-testing.R 
 
 #Save session info information
-session-info: code/scripts/session-info.R
-	Rscript code/scripts/session-info.R
+session-info: code/scripts/session.sh
+	sh code/scripts/session.sh
 
 ridge:
 	Rscript code/regression-scripts/ridge-regression.R; 
