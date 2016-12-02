@@ -2,6 +2,7 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\graphicspath{~/pandoc-test/Stat159/stat159-fall2016-project3}
 \begin{document}
 
 \title{Report}
@@ -13,18 +14,12 @@
 
 
 <<loadData, echo=FALSE>>=
-topschools <- read.csv("~/pandoc-test/stat159/stat159-fall2016-project3/data/top_schools.csv")
-test_set <- read.csv('~/pandoc-test/Stat159/stat159-fall2016-project3/data/test-set.csv')
-train_set <- read.csv('~/pandoc-test/Stat159/stat159-fall2016-project3/data/train-set.csv')
-CSC10_11 <- read.csv('~/pandoc-test/Stat159/stat159-fall2016-project3/data/CSC10_11.csv')
-load('~/pandoc-test/Stat159/stat159-fall2016-project3/data/multiple-linear-reg.RData')
+topschools <- read.csv("../data/top_schools.csv")
+test_set <- read.csv('../data/test-set.csv')
+train_set <- read.csv('../data/train-set.csv')
+CSC10_11 <- read.csv('../data/CSC10_11.csv')
+load('../data/multiple-linear-reg.RData')
 library(xtable)
-@
-
-<<r, echo=F, results=tex>>=
-
-#bio <- topschools[order(topschools$PCIP26, decreasing=T)[1:10],c('INSTNM','PCIP26')]
-#table(bio)
 @
 
 
@@ -210,9 +205,9 @@ When we compare the coefficient in the low tier, we can see that SAT math and AC
 
 \textbf{Ridge Regression}\newline
 <<loaddata,echo=F>>=
-load("~/pandoc-test/stat159/stat159-fall2016-project3/data/rigde-reg.RData")
-load("~/pandoc-test/stat159/stat159-fall2016-project3/data/rigde1-reg.RData")
-load("~/pandoc-test/stat159/stat159-fall2016-project3/data/rigde2-reg.RData")
+load("../data/rigde-reg.RData")
+load("../data/rigde1-reg.RData")
+load("../data/rigde2-reg.RData")
 @
 <<MSE, echo=F, results=tex>>=
 MSE <- c(full_mse_ridge, full_mse_ridge2, full_mse_ridge1)
@@ -221,12 +216,23 @@ print(xtable(MSE, digits=7), include.rownames=F)
 @
 Since there is no r-squared in ridge regression, we can compare the MSE from ridge regression with multiple linear regression. We can see that the MSE in ridge regression are fairly close to the multiple linear regression. 
 
+<<echo=F, results=tex>>=
+coeff_ridge <- as.vector(coeff_ridge)
+coeff_ridge <- as.matrix(coeff_ridge)
+row.names(coeff_ridge)<-c("Intercept","SATMT75","ACTMT75","ADM_RATE", "COMP_ORIG_YR4_RT","PELL_COMP_ORIG_YR6_RT")
+xtable(coeff_ridge, digits=7)
+#print(xtable(coeff_ridge),sanitize.text.function=function(x){x})
 
-<<coef, echo=F, results=tex>>=
-#coef <- c(coeff_ridge, coeff_ridge2, coeff__ridge1)
-#coef <- as.data.frame(coeff_ridge,coeff_ridge2, coeff_ridge1)
-#print(xtable(coef, digits=7), include.rownames=F)
+coeff_ridge2<-as.matrix(as.vector(coeff_ridge2))
+row.names(coeff_ridge2)<-c("Intercept","SATMT75","ACTMT75","ADM_RATE", "COMP_ORIG_YR4_RT","PELL_COMP_ORIG_YR6_RT")
+xtable(coeff_ridge2)
+#print(xtable(ridge_full_matrix2),sanitize.text.function=function(x){x})
+
+coeff_ridge1<-as.matrix(as.vector(coeff_ridge1))
+row.names(coeff_ridge1)<-c("Intercept","SATMT75","ACTMT75","ADM_RATE", "COMP_ORIG_YR4_RT","PELL_COMP_ORIG_YR6_RT")
+xtable(coeff_ridge1)
 @
+
 When we compare the ridge coefficients with multiple linear regression coefficients, it shows a larger positive relationship between SAT math/ACT scores with earning. For every standard deviation increase in SAT math/ACT, there is a higher increase in standard deviation of earning. Ridge regression coefficient also show a negative relationship between admission rate and pell grant recipient against high earning.
 \newline
 \newline
@@ -234,9 +240,9 @@ When we compare the ridge coefficients with multiple linear regression coefficie
 \textbf{Random Forest} \newline
 After comparing the coefficients, r-squared and MSE from multiple linear regression and ridge regression, we used random forest to predict earnings. 
 <<loadRFdata, echo=F>>=
-load("~/pandoc-test/stat159/stat159-fall2016-project3/data/random-forest-low.RData")
-load("~/pandoc-test/stat159/stat159-fall2016-project3/data/random-forest-mid.RData")
-load("~/pandoc-test/stat159/stat159-fall2016-project3/data/random-forest-top.RData")
+load("../data/random-forest-low.RData")
+load("../data/random-forest-mid.RData")
+load("../data/random-forest-top.RData")
 @
 
 <<varplot,echo=F,results=tex>>=
@@ -250,10 +256,71 @@ xtable(varplot,digits=7)
 
 \textbf{Multiple Linear Regression}\newline
 
-\includegraphics{images/lm_low.png}
+\begin{figure}[h!]
+\includegraphics{../images/lm_top.png}
+\end{figure}
 
-From the plots above, we can see that we could fit the multiple linear regression model in our case. 
 
+\textbf{Ridge Regression}
+\begin{figure}[h!]
+\includegraphics{../images/ridgeCV_top.png}
+\end{figure}
+
+
+\textbf{Random Forest}
+\begin{figure}[h!]
+\includegraphics{../images/rf_top.png}
+\end{figure}
+The plot shows that the error become more stable after 50 decision trees.
+
+
+There is a positive relationship for high graduation rate, SAT math and ACT scores, which leads to an increase in mean earning after graduation. There is also a negative relationship for lower admission rate and pell grant recipients. Schools that are more selective accepts less students. So an increase in admission rate would harm the mean earning. Also, pell grant recipients usually come from a below average family backgrounds, which lead to less earning after graduation. 
+
+
+\begin{figure}[h!]
+\includegraphics{../images/college-frequency.png}
+\end{figure}
+In this plot, we can see most top schools come from California. 
+
+
+Then, we determine the biggest programs from these top schools according to the major. 
+Biology 
+\begin{figure}[h!]
+\includegraphics{../images/biggestBio.png}
+\end{figure}
+
+
+Computer Science
+\begin{figure}[h!]
+\includegraphics{../images/biggestCS.png}
+\end{figure}
+
+
+Engineering
+\begin{figure}[h!]
+\includegraphics{../images/biggestEngineering.png}
+\end{figure}
+
+
+Math/Statistics
+\begin{figure}[h!]
+\includegraphics{../images/biggestMathStat.png}
+\end{figure}
+
+
+Technicians
+\begin{figure}[h!]
+\includegraphics{../images/biggestTechnicians.png}
+\end{figure}
+
+
+Physical Science 
+\begin{figure}[h!]
+\includegraphics{../images/biggestPhysical.png}
+\end{figure}
+
+
+A tech company can easily find which school produces high achieving students with a large program according to the major. 
 
 \section{Conclusions}
 
