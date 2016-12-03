@@ -1,4 +1,4 @@
-data13_14 <- read.csv('data/CSC13_14.csv')
+data13_14 <- read.csv('./data/CSC13_14.csv')
 library(ggplot2)
 #Based on the latest data set, from 2013-2014:
 #The number of colleges does not change year to year.  This is a plot of how many colleges are in each state.
@@ -11,10 +11,10 @@ collegeFreq <- ggplot(data13_14, aes(x=STABBR)) + geom_bar(fill="dark green") +
 #The state with the most 4 year colleges is California. 
 #Top 10 states with the most amount of colleges is:
 x <- order(summary(data13_14$STABBR), decreasing=T)
-summary(data13_14$STABBR)[x][1:10]
+schoolcount<- summary(data13_14$STABBR)[x][1:10]
+save(schoolcount, file='../data/college-frequency.RData')
 
-
-png('images/college-frequency.png')
+png('./images/college-frequency.png')
 collegeFreq
 dev.off()
 
@@ -31,7 +31,7 @@ SATplot <- ggplot(data = SATdf, aes(x = SATscore, y = counts)) +
   geom_bar(stat = "identity",  fill="steelblue", width=0.5) + 
   ggtitle("Above average SAT Math score vs count 2013-2014")
 
-png('images/above-average-SAT-13-14.png')
+png('./images/above-average-SAT-13-14.png')
 SATplot
 dev.off()
 
@@ -50,6 +50,6 @@ ACTplot <- ggplot(data = ACTdf, aes(x = ACTscore, y = count)) +
   geom_bar(stat = "identity",  fill="pink", width=0.5) +
   ggtitle("Above average ACT score vs count 2013-2014")
   
-png('images/above-average-ACT-13-14.png')
+png('./images/above-average-ACT-13-14.png')
 ACTplot
 dev.off()
