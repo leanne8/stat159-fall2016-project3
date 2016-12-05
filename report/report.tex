@@ -58,7 +58,6 @@ We have decided it was useful to keep descriptive categories such as
 [1] "INSTNM" "CITY"   "STABBR" "ZIP"   
 \end{Soutput}
 \end{Schunk}
-
 which give the institution name, city, state, and zip code respectively.  In deciding which categories will give a college certain desirable characteristics for our client, we broke the factors into 3 parts:
 
 \begin{enumerate}
@@ -148,8 +147,8 @@ After comparing the results between multiple linear regression and ridge regress
 
 \subsection{Overview of Regression Models}
 
-\textbf{Multiple Linear Regression} \newline
-The goal of multiple linear regression is to see how our response variable changes when it is dependent on other variables.  These variables are assumed to be invariant from each other so we can look at how the response variables changes when only one predictor variables changes at a time, keeping the other variables constant.  The multiple linear regression model is given by:
+\noindent \textbf{Multiple Linear Regression} \newline
+\indent The goal of multiple linear regression is to see how our response variable changes when it is dependent on other variables.  These variables are assumed to be invariant from each other so we can look at how the response variables changes when only one predictor variables changes at a time, keeping the other variables constant.  The multiple linear regression model is given by:
 
 $$\hat Y = \hat \beta_0 + \hat \beta_1 X_1 + \hat \beta_2 X_2 + \dots + \hat \beta_p X_p + \hat \epsilon$$
 
@@ -158,7 +157,7 @@ The goals is to find the estimates of $\beta_i$ by using $\hat \beta_i$ and use 
 \newline
 \newline
 \textbf{Ridge Regression}\newline
-Ridge regression is similar to OLS with the coefficients estimated by minimizing a slightly different quantity.  By minimizing RSS, we can find the coefficient estimates that fit the data well. 
+\indent Ridge regression is similar to OLS with the coefficients estimated by minimizing a slightly different quantity.  By minimizing RSS, we can find the coefficient estimates that fit the data well. 
 
 $$\sum_{i=1}^{n}(y_i-\beta_0-\sum_{j=1}^{p}\beta_jx_{ij})^2+\lambda\sum_{j=1}^{p}\beta_j^2 = RSS + \lambda\sum_{j=1}^{p}\beta_j^{2}$$ 
 
@@ -166,7 +165,7 @@ However, the shrinkage penalty is that $\lambda\sum_{j=1}^{p}\beta_j^{2}$ is sma
 \newline
 \newline
 \textbf{Random Forest}\newline
-Random forest is another regression method that constructs many ``decision trees'' on the training data, more of a machine learning bootstrap.  Decision trees partition the data one variable at a time to decrease the residual sum of squares. 
+\indent Random forest is another regression method that constructs many ``decision trees'' on the training data, more of a machine learning bootstrap.  Decision trees partition the data one variable at a time to decrease the residual sum of squares. 
 
 Random forest also outputs 2 additional measurements:
 \begin{itemize}
@@ -175,16 +174,15 @@ Random forest also outputs 2 additional measurements:
 \end{itemize}
 
 $$\hat y =  \sum_{i=1}^{n} \left(\frac{1}{m} \sum_{i=1}^{m} (W_j(x_i,x')\right)y_i$$
-
 Here, W is a weight function that takes the new point $x'$ and weights it relative to a neighbor point, $x_i$.  Altogether, these predict the new $\hat y$.
 
 
 
 \section{Analysis}
 
-\textbf{Multiple Linear Regression}\newline
+\noindent \textbf{Multiple Linear Regression}\newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:49 2016
+% Sun Dec 04 20:24:28 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -197,7 +195,7 @@ Top Tier & 0.6029138 \\
    \hline
 \end{tabular}
 \end{table}\newline
-  The chart above shows the r-squared when comparing our predictors against earning after graduation in three tiers. The r-squared in this class is similar for top and middle tiers.  However, if we compared the r-squared with just top and bottom tiers, we can see that top tier of 
+\indent The chart above shows the r-squared when comparing our predictors against earning after graduation in three tiers. The r-squared in this class is similar for top and middle tiers.  However, if we compared the r-squared with just top and bottom tiers, we can see that top tier of 
 \begin{Schunk}
 \begin{Sinput}
 > TopLMsum
@@ -218,7 +216,7 @@ is performing better than
 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:49 2016
+% Sun Dec 04 20:24:28 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -230,7 +228,7 @@ Top Tier & 0.3939347 \\
   Low Tier & 0.4171275 \\ 
    \hline
 \end{tabular}
-\end{table}Again, this MSE chart also have values that are similar within different tiers. However, low tier is still performing worse than the top and middle tiers. Since low tier has the highest MSE of 
+\end{table}\noindent Again, this MSE chart also have values that are similar within different tiers. However, low tier is still performing worse than the top and middle tiers. Since low tier has the highest MSE of 
 \begin{Schunk}
 \begin{Sinput}
 > LowMSE
@@ -276,7 +274,7 @@ The following data are the coefficients of each earning bracket from the multupl
 \end{Soutput}
 \end{Schunk}
 
-First, let look at the coefficient in the top tier.  We can see that there is a positive relationship effect for SAT math, ACT and graduation rate against the top tier of earning.  For every standard deviation of SAT math score increases, there is an increase in 
+\noindent First, let look at the coefficient in the top tier.  We can see that there is a positive relationship effect for SAT math, ACT and graduation rate against the top tier of earning.  For every standard deviation of SAT math score increases, there is an increase in 
 \begin{Schunk}
 \begin{Sinput}
 > TopCoef['SATMT75']
@@ -291,9 +289,9 @@ When we compare the coefficient in the low tier, we can see that SAT math and AC
 \newline
 \newline
 
-\textbf{Ridge Regression}\newline
+\noindent \textbf{Ridge Regression}\newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:49 2016
+% Sun Dec 04 20:24:28 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -311,7 +309,7 @@ Top Tier Earnings & 0.3974380 \\
 
   The following data are the coefficients of each tier earning, generated from the ridge regression.  The order of the tables are as follows: Top Tier Earnings, Middle Tier Earnings, Lowest Tier Earnings \newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:50 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -327,7 +325,7 @@ Intercept & 0.0000000 \\
    \hline
 \end{tabular}
 \end{table}% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:50 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -343,7 +341,7 @@ Intercept & 0.0000000 \\
    \hline
 \end{tabular}
 \end{table}% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:50 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -359,15 +357,14 @@ Intercept & 0.0000000 \\
    \hline
 \end{tabular}
 \end{table}\newline
-  When we compare the ridge coefficients with multiple linear regression coefficients, it shows a larger positive relationship between SAT math/ACT scores and earnings.  For every standard deviation increase in SAT math/ACT scores, there is a higher increase in standard deviation of earnings. The ridge regression coefficient also shows a negative relationship between admission rate and pell grant recipients against high earnings.
-\newline
+  \indent When we compare the ridge coefficients with multiple linear regression coefficients, it shows a larger positive relationship between SAT math/ACT scores and earnings.  For every standard deviation increase in SAT math/ACT scores, there is a higher increase in standard deviation of earnings. The ridge regression coefficient also shows a negative relationship between admission rate and pell grant recipients against high earnings.
 \newline
 
-\textbf{Random Forest} \newline
-  After comparing the coefficients, r-squared and MSE values from multiple linear regression and ridge regression, we used random forest to predict earnings. 
+\noindent \textbf{Random Forest} \newline
+\indent After comparing the coefficients, r-squared and MSE values from multiple linear regression and ridge regression, we used random forest to predict earnings. 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:50 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -381,13 +378,12 @@ SATMT75 & 20.4896669 \\
   PELL\_COMP\_ORIG\_YR6\_RT & 11.0211386 \\ 
    \hline
 \end{tabular}
-\end{table}
-  In random forest regression, we can look at the importance of the model.   It consists of ``IncNodePurity", which is the average cummulative reduction in node impurity due to splits by a variable over the trees. It is also the mean decrease in MSE.   From the variance importance, we can see that the main positive relationships are from SAT math and ACT scores, concluding an existing positive correlation with mean earnings.   From the random forest model, we can choose the best features that represent our data.  In addition, the more selective schools that have a lower admission rate also play an important factor with mean earnings. 
+\end{table}\noindent In random forest regression, we can look at the importance of the model.   It consists of ``IncNodePurity", which is the average cummulative reduction in node impurity due to splits by a variable over the trees. It is also the mean decrease in MSE.   From the variance importance, we can see that the main positive relationships are from SAT math and ACT scores, concluding an existing positive correlation with mean earnings.   From the random forest model, we can choose the best features that represent our data.  In addition, the more selective schools that have a lower admission rate also play an important factor with mean earnings. 
 
-
+\clearpage
 \section{Results}
 
-\textbf{Multiple Linear Regression}\newline
+\noindent \textbf{Multiple Linear Regression}\newline
 
 \begin{figure}[H]
 \includegraphics[width=1\textwidth]{../images/lm_top.png}
@@ -395,7 +391,7 @@ SATMT75 & 20.4896669 \\
 
 \clearpage
 
-\textbf{Ridge Regression} \newline
+\noindent \textbf{Ridge Regression} \newline
 
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/ridgeCV_top.png}
@@ -403,18 +399,18 @@ SATMT75 & 20.4896669 \\
 
 \clearpage
 
-\textbf{Random Forest}\newline
+\noindent \textbf{Random Forest}\newline
 
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/rf_top.png}
 \end{figure}
-The plot shows that the error become more stable after 50 decision trees.
+\noindent The plot shows that the error become more stable after 50 decision trees.
 
 
 There is a positive relationship for high graduation rate, SAT math and ACT scores, which leads to an increase in mean earnings after graduation.  There is also a negative relationship for lower admission rate and pell grant recipients.  Schools that are more selective accept less students; so from our findings, an increase in admission rate would harm the mean earnings.  In addition, pell grant recipients usually come from below average family backgrounds, which lead to less earnings after graduation. 
 
 \clearpage
-Top 10 states that contain the most amount of colleges are:
+\noindent Top 10 states that contain the most amount of colleges are:
 \begin{Schunk}
 \begin{Soutput}
  CA  TX  NY  FL  PA  OH  IL  MO  MI  NC 
@@ -425,12 +421,12 @@ Top 10 states that contain the most amount of colleges are:
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/college-frequency.png}
 \end{figure}
-From this plot, we can see most top schools come from California. 
+\noindent From this plot, we can see most top schools come from California. 
 
 \clearpage
 
 
-The following graphs are divided according to subject or major category.  They depict the schools with the biggest respective programs.  For example, the first graph decpicts the ``Top 10 Biggest Bio/Biomedical Programs''.  In this chart, UC San Diego is the largest bio program in the country with a whopping
+\noindent The following graphs are divided according to subject or major category.  They depict the schools with the biggest respective programs.  For example, the first graph decpicts the ``Top 10 Biggest Bio/Biomedical Programs''.  In this chart, UC San Diego is the largest bio program in the country with a whopping
 \begin{Schunk}
 \begin{Soutput}
 [1] 0.2294
@@ -439,7 +435,7 @@ The following graphs are divided according to subject or major category.  They d
 portion of the student population graduate from this school with a bio/biomedical degree.  Then, we determine the biggest programs from these top schools according to the major. \newline
 Biology
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:50 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -466,7 +462,7 @@ Biology
 
 Computer Science
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:50 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -494,7 +490,7 @@ Computer Science
 
 Engineering
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:50 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -522,7 +518,7 @@ Engineering
 
 Mathematics/Statistics
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:50 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -550,7 +546,7 @@ Mathematics/Statistics
 
 Science Technologies/Technicians
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:51 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -570,7 +566,7 @@ Science Technologies/Technicians
 
 Physical Science 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:01:51 2016
+% Sun Dec 04 20:24:30 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
