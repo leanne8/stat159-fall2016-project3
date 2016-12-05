@@ -34,7 +34,40 @@ Providing our client from the biotech industry with the most qualified schools t
 
 ##Multiple linear regression
 ##Ridge regression
-##Random force
+##Random forrest
 
 ##Conclusion
+
+Our goal is to find high achieving students based on their **ACT, SAT math scores, admission rate *(how selective is their school)*, graduation rate and pell grant status**.
+
+Then suggest schools to our client based on specific skills. We have *2* regression models, MLR, ridge (better model for our data), random forest is used to find best features to predict earnings.
+
+In both regressions, the lowest tier of earnings had the highest MSE value.  This concludes that they deviate most from the average.  
+
+
+Multiple Linear Regression (results):
+From the analysis of our project, we found that multiple linear regression produces similar R squares and MSE for all three tiers. However, the low tier is still appear a disadvantage from other tiers. 
+
+
+Ridge Regression (results):
+Ridge regression produces similar R squares and MSE for all tiers.  Ridge regression adds a penalty term to reduce overfitting, which produces better results than multiple linear regression.
+The results from ridge regression can best be explained through our coefficients.  
+In the coefficients of \emph{both} multiple linear regression and ridge regression, we found that there are positive relationship between future earnings and SAT math, ACT scores and graduation rate. There exists a negative relationship between future earnings with admission rate and pell grant recipients. 
+Math SAT scores, ACT scores and graduation rate all had positive coefficients with respect to earnings.  This is what we expected, that the test scores accurately correlate with earnings because these predict how difficult and competitive a school is.  
+Admission rate is negatively relates to earnings, as we expected because the less schools they admit, the higher the earnings are.  This is consistent with what we expected, that lower admission rate (more competitive schools) leads to higher earning students.  
+Pell-grants come from a more disadvantaged family, lack of resources.  People who don’t receive pell grants have more resources in support, which relates to higher earnings in the future.  This is also consistent with what we expected, that more privileged students are more likely to succeed in the future.
+
+
+Random Forest (results):
+From random forest model, we can find out which are the best features to predict the future earnings. In the variance importance, it shows the positive relationships from SAT math and ACT  scores with respect to future earnings.  	 		
+
+
+The middle tier range is very large, so it’s hard to conclude any significant and distinct results from our analyses.  This is probably because the $30,000-$75,000 range is very average for all schools across the board, so many STEM and non-STEM people could still fall in that range.  Therefore we cannot conclude that the middle tier is associated with high earnings or low earnings.
+California has most of the largest top STEM programs, vaguely followed by Texas and New York.  
+
+
+Our results provide a recommendation of schools to pick from in terms of specific skills.  We recommend choosing schools from our top school data set for the smallest admission rate, and highest SAT scores, ACT scores and graduation rate with respect to each skill.  
+
+
+
 
