@@ -3,7 +3,10 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{parskip}
+\usepackage{indentfirst}
 \graphicspath{~/pandoc-test/Stat159/stat159-fall2016-project3}
+\setlength{\parindent}{1cm}
 \begin{document}
 
 \title{Report}
@@ -26,7 +29,7 @@ library(xtable)
 
 \section{Abstract}
 
-  This project focuses on providing our client from the biotech industry with the most qualified schools who fulfill their criterias of recruitment.  To determine the best scshools for our client, we need to set a bar on what determines a ''top school``.  To achieve this, we will focus on the use of College ScoreCard dataset.  To determine which schools contain the highest achieving biotech students, we have set our dependent variable to be earnings after graduation.  We will then look at how our other independent variables influence the earnings. 
+  This project focuses on providing our client from the biotech industry with the most qualified schools who fulfill their criterias of recruitment.  To determine the best scshools for our client, we need to set a bar on what determines a ``top school''.  To achieve this, we will focus on the use of College ScoreCard dataset.  To determine which schools contain the highest achieving biotech students, we have set our dependent variable to be earnings after graduation.  We will then look at how our other independent variables influence the earnings. 
 
 \section{Introduction}
 
@@ -147,12 +150,12 @@ However, the shrinkage penalty is that $\lambda\sum_{j=1}^{p}\beta_j^{2}$ is sma
 \newline
 \newline
 \textbf{Random Forest}\newline
-Random forest is another regression method that constructs many ''decision trees`` on the training data, more of a machine learning bootstrap.  Decision trees partition the data one variable at a time to decrease the residual sum of squares. 
+Random forest is another regression method that constructs many ``decision trees'' on the training data, more of a machine learning bootstrap.  Decision trees partition the data one variable at a time to decrease the residual sum of squares. 
 
 Random forest also outputs 2 additional measurements:
 \begin{itemize}
 \item Variable importance: this is essence, ranks the variables of greatest importance (done by looking at how much the error value changes when you only change the independent variable, keeping the other variables constant)
-\item Neighbor proximity: this is used to determine the ''structure`` of the data
+\item Neighbor proximity: this is used to determine the ``structure'' of the data
 \end{itemize}
 
 $$\hat y =  \sum_{i=1}^{n} \left(\frac{1}{m} \sum_{i=1}^{m} (W_j(x_i,x')\right)y_i$$
@@ -389,6 +392,28 @@ A tech company can easily find which school produces high achieving students wit
 \clearpage
 
 \section{Conclusions}
+
+Our goal is to find high achieving students based on their ACT, SAT math scores, admission rate (how selective is their school), graduation rate and pell grant status.  Then suggest schools to our client based on specific skills.
+\newline
+\indent  We have 2 regression models, MLR, ridge (better model for our data), random forest is used to find best features to predict earnings.  
+In both regressions, the lowest tier of earnings had the highest MSE value.  This concludes that they deviate most from the average.  
+\newline
+\indent From the analysis of our project, we found that multiple linear regression produces similar R squares and MSE values for all three tiers.  However, the low tier is still appear a disadvantage from other tiers.  
+\indent Ridge regression produces similar R squares and MSE for all tiers.  Ridge regression adds a penalty term to reduce overfitting, which produces better results than multiple linear regression.  
+\newline
+\indent The results from ridge regression can best be explained through our coefficients.  
+In the coefficients of \emph{both} multiple linear regression and ridge regression, we found that there are positive relationship between future earnings and SAT math, ACT scores and graduation rate. There exists a negative relationship between future earnings with admission rate and pell grant recipients.  
+\newline
+\indent Math SAT scores, ACT scores and graduation rate all had positive coefficients with respect to earnings.  This is what we expected, that the test scores accurately correlate with earnings because these predict how difficult and competitive a school is.  
+Admission rate is negatively relates to earnings, as we expected because the less schools they admit, the higher the earnings are.  This is consistent with what we expected, that lower admission rate (more competitive schools) leads to higher earning students.  
+Pell-grants come from a more disadvantaged family, lack of resources.  People who don't receive pell grants have more resources in support, which relates to higher earnings in the future.  This is also consistent with what we expected, that more privileged students are more likely to succeed in the future.
+\newline
+\indent  From random forest model, we can find out which are the best features to predict the future earnings. In the variance importance, it shows the positive relationships from SAT math and ACT  scores with respect to future earnings.  	 		
+\newline
+\indent The middle tier range is very large, so it's hard to conclude any significant and distinct results from our analyses.  This is probably because the $30,000-$75,000 range is very average for all schools across the board, so many STEM and non-STEM people could still fall in that range.  Therefore we cannot conclude that the middle tier is associated with high earnings or low earnings.  
+We also found that California has most of the largest top STEM programs, vaguely followed by Texas and New York.  This is most likely due to the size of each state.  
+\newline
+\indent Our results provide a recommendation of schools to pick from in terms of specific skills.  We recommend choosing schools from our top school data set for the smallest admission rate, and highest SAT scores, ACT scores and graduation rate with respect to each skill.  
 
 
 \end{document}
