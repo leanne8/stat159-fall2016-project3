@@ -1,6 +1,7 @@
 ---
-  title: "slides"
-output: pdf_document
+title: "Finding high achieving students for tech companies "
+author: "Leanne Lee, Jamie Stankiewiz, Eranda Bregasi"
+output: html_document
 ---
 
 #Introduction
@@ -34,7 +35,7 @@ Providing our client from the biotech industry with the most qualified schools t
 
 ##Multiple linear regression
 ##Ridge regression
-##Random force
+##Random forest
 
 ##Conclusion
 
