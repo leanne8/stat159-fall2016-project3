@@ -1,12 +1,9 @@
 ---
-<<<<<<< HEAD
-  title: "slides"
-=======
 title: "Finding high achieving students for tech companies "
 author: "Leanne Lee, Jamie Stankiewiz, Eranda Bregasi"
->>>>>>> 748931d2108c61c7ae8c944c3ded5c21e6ef4bdc
 output: html_document
 ---
+
 
 #Introduction
 ##Purpose
