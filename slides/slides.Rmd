@@ -1,11 +1,14 @@
 ---
 title: "Finding high achieving students for tech companies "
 author: "Leanne Lee, Jamie Stankiewiz, Eranda Bregasi"
-output: html_document
+output: ioslides_presentation
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(xtable)
+```
 
-#Introduction
 ##Purpose
 Providing our client from the biotech industry with the most qualified schools that fulfill their criterias of recruitment. 
 
