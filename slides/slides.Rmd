@@ -1,6 +1,6 @@
 ---
   title: "slides"
-output: pdf_document
+output: html_document
 ---
 
 #Introduction
@@ -15,7 +15,7 @@ Providing our client from the biotech industry with the most qualified schools t
 
 ##Selecting predictors. 
     - Average SAT math and ACT scores
-    - School’s admission rate. 
+    - Schools admission rate. 
     - Graduation rate.
     - Pell Grant recipent 
     - Percentage of students who received a 4 year degree in STEM fields.
