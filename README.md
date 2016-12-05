@@ -1,4 +1,4 @@
-#Final Project	
+#Finding high achieving students for tech companies 
 
 ## Leanne Lee, Jamie Stankiewiz, Eranda Bregasi
 
