@@ -133,7 +133,7 @@ After comparing the results between multiple linear regression and ridge regress
 \subsection{Overview of Regression Models}
 
 \textbf{Multiple Linear Regression} \newline
-The goal of multiple linear regression is to see how our response variable changes when it is dependent on other variables.  These variables are assumed to be invariant from each other so we can look at how the response variables changes when only one predictor variables changes at a time, keeping the other variables constant.  The multiple linear regression model is given by:
+\indent The goal of multiple linear regression is to see how our response variable changes when it is dependent on other variables.  These variables are assumed to be invariant from each other so we can look at how the response variables changes when only one predictor variables changes at a time, keeping the other variables constant.  The multiple linear regression model is given by:
 
 $$\hat Y = \hat \beta_0 + \hat \beta_1 X_1 + \hat \beta_2 X_2 + \dots + \hat \beta_p X_p + \hat \epsilon$$
 
@@ -142,7 +142,7 @@ The goals is to find the estimates of $\beta_i$ by using $\hat \beta_i$ and use 
 \newline
 \newline
 \textbf{Ridge Regression}\newline
-Ridge regression is similar to OLS with the coefficients estimated by minimizing a slightly different quantity.  By minimizing RSS, we can find the coefficient estimates that fit the data well. 
+\indent Ridge regression is similar to OLS with the coefficients estimated by minimizing a slightly different quantity.  By minimizing RSS, we can find the coefficient estimates that fit the data well. 
 
 $$\sum_{i=1}^{n}(y_i-\beta_0-\sum_{j=1}^{p}\beta_jx_{ij})^2+\lambda\sum_{j=1}^{p}\beta_j^2 = RSS + \lambda\sum_{j=1}^{p}\beta_j^{2}$$ 
 
@@ -150,7 +150,7 @@ However, the shrinkage penalty is that $\lambda\sum_{j=1}^{p}\beta_j^{2}$ is sma
 \newline
 \newline
 \textbf{Random Forest}\newline
-Random forest is another regression method that constructs many ``decision trees'' on the training data, more of a machine learning bootstrap.  Decision trees partition the data one variable at a time to decrease the residual sum of squares. 
+\indent Random forest is another regression method that constructs many ``decision trees'' on the training data, more of a machine learning bootstrap.  Decision trees partition the data one variable at a time to decrease the residual sum of squares. 
 
 Random forest also outputs 2 additional measurements:
 \begin{itemize}
@@ -175,7 +175,7 @@ rownames(R_squared_summary) <- c('Top Tier', 'Middle Tier', 'Low Tier')
 xtable(R_squared_summary, digits=7)
 @
 \newline
-  The chart above shows the r-squared when comparing our predictors against earning after graduation in three tiers. The r-squared in this class is similar for top and middle tiers.  However, if we compared the r-squared with just top and bottom tiers, we can see that top tier of 
+\indent The chart above shows the r-squared when comparing our predictors against earning after graduation in three tiers. The r-squared in this class is similar for top and middle tiers.  However, if we compared the r-squared with just top and bottom tiers, we can see that top tier of 
 <<toptier, echo=T>>=
 TopLMsum
 @
@@ -254,12 +254,11 @@ row.names(coeff_ridge1)<-c("Intercept","SATMT75","ACTMT75","ADM_RATE", "COMP_ORI
 xtable(coeff_ridge1,digits=7)
 @
 \newline
-  When we compare the ridge coefficients with multiple linear regression coefficients, it shows a larger positive relationship between SAT math/ACT scores and earnings.  For every standard deviation increase in SAT math/ACT scores, there is a higher increase in standard deviation of earnings. The ridge regression coefficient also shows a negative relationship between admission rate and pell grant recipients against high earnings.
-\newline
+  \indent When we compare the ridge coefficients with multiple linear regression coefficients, it shows a larger positive relationship between SAT math/ACT scores and earnings.  For every standard deviation increase in SAT math/ACT scores, there is a higher increase in standard deviation of earnings. The ridge regression coefficient also shows a negative relationship between admission rate and pell grant recipients against high earnings.
 \newline
 
 \textbf{Random Forest} \newline
-  After comparing the coefficients, r-squared and MSE values from multiple linear regression and ridge regression, we used random forest to predict earnings. 
+\indent After comparing the coefficients, r-squared and MSE values from multiple linear regression and ridge regression, we used random forest to predict earnings. 
 <<loadRFdata, echo=F>>=
 load("../data/random-forest-low.RData")
 load("../data/random-forest-mid.RData")
@@ -272,7 +271,7 @@ xtable(varplot,digits=7)
 
   In random forest regression, we can look at the importance of the model.   It consists of ``IncNodePurity", which is the average cummulative reduction in node impurity due to splits by a variable over the trees. It is also the mean decrease in MSE.   From the variance importance, we can see that the main positive relationships are from SAT math and ACT scores, concluding an existing positive correlation with mean earnings.   From the random forest model, we can choose the best features that represent our data.  In addition, the more selective schools that have a lower admission rate also play an important factor with mean earnings. 
 
-
+\clearpage
 \section{Results}
 
 \textbf{Multiple Linear Regression}\newline
