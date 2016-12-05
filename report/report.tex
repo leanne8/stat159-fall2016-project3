@@ -151,7 +151,6 @@ After comparing the results between multiple linear regression and ridge regress
 \indent The goal of multiple linear regression is to see how our response variable changes when it is dependent on other variables.  These variables are assumed to be invariant from each other so we can look at how the response variables changes when only one predictor variables changes at a time, keeping the other variables constant.  The multiple linear regression model is given by:
 
 $$\hat Y = \hat \beta_0 + \hat \beta_1 X_1 + \hat \beta_2 X_2 + \dots + \hat \beta_p X_p + \hat \epsilon$$
-
 The betas are the effective increase in $Y$ with a unit increase in $X_i$, holding the other variables fixed.  
 The goals is to find the estimates of $\beta_i$ by using $\hat \beta_i$ and use the ANOVA analysis to determine which variables are significant to predicting the response variable.
 \newline
@@ -160,7 +159,6 @@ The goals is to find the estimates of $\beta_i$ by using $\hat \beta_i$ and use 
 \indent Ridge regression is similar to OLS with the coefficients estimated by minimizing a slightly different quantity.  By minimizing RSS, we can find the coefficient estimates that fit the data well. 
 
 $$\sum_{i=1}^{n}(y_i-\beta_0-\sum_{j=1}^{p}\beta_jx_{ij})^2+\lambda\sum_{j=1}^{p}\beta_j^2 = RSS + \lambda\sum_{j=1}^{p}\beta_j^{2}$$ 
-
 However, the shrinkage penalty is that $\lambda\sum_{j=1}^{p}\beta_j^{2}$ is small when $\beta$ are close to zero. Ridge regression will produce a different set of coefficient estimates for each value of $\lambda$ .
 \newline
 \newline
@@ -182,7 +180,7 @@ Here, W is a weight function that takes the new point $x'$ and weights it relati
 
 \noindent \textbf{Multiple Linear Regression}\newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:28 2016
+% Sun Dec 04 20:26:58 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -216,7 +214,7 @@ is performing better than
 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:28 2016
+% Sun Dec 04 20:26:58 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -291,7 +289,7 @@ When we compare the coefficient in the low tier, we can see that SAT math and AC
 
 \noindent \textbf{Ridge Regression}\newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:28 2016
+% Sun Dec 04 20:26:58 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -309,7 +307,7 @@ Top Tier Earnings & 0.3974380 \\
 
   The following data are the coefficients of each tier earning, generated from the ridge regression.  The order of the tables are as follows: Top Tier Earnings, Middle Tier Earnings, Lowest Tier Earnings \newline
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -325,7 +323,7 @@ Intercept & 0.0000000 \\
    \hline
 \end{tabular}
 \end{table}% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -341,7 +339,7 @@ Intercept & 0.0000000 \\
    \hline
 \end{tabular}
 \end{table}% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -364,7 +362,7 @@ Intercept & 0.0000000 \\
 \indent After comparing the coefficients, r-squared and MSE values from multiple linear regression and ridge regression, we used random forest to predict earnings. 
 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rr}
@@ -435,7 +433,7 @@ There is a positive relationship for high graduation rate, SAT math and ACT scor
 portion of the student population graduate from this school with a bio/biomedical degree.  Then, we determine the biggest programs from these top schools according to the major. \newline
 Biology
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -462,7 +460,7 @@ Biology
 
 Computer Science
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -490,7 +488,7 @@ Computer Science
 
 Engineering
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -518,7 +516,7 @@ Engineering
 
 Mathematics/Statistics
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -546,7 +544,7 @@ Mathematics/Statistics
 
 Science Technologies/Technicians
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
@@ -566,7 +564,7 @@ Science Technologies/Technicians
 
 Physical Science 
 % latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Sun Dec 04 20:24:30 2016
+% Sun Dec 04 20:26:59 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rlr}
