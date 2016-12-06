@@ -1,4 +1,5 @@
 library(shiny)
+library(glmnet)
 topSchools <- read.csv("../../data/top_schools.csv")
 load("../../data/multiple-linear-reg.RData")
 load("../../data/rigde-reg.RData")
