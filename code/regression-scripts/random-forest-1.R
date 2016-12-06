@@ -12,13 +12,13 @@ testSet = testSet[c("SATMT75", "ACTMT75", "ADM_RATE", "COMP_ORIG_YR4_RT","PELL_C
 testSet$MN_EARN_WNE_INC1_P10 <- as.numeric(as.character(testSet$MN_EARN_WNE_INC1_P10))
 testSet <- testSet[complete.cases(testSet$MN_EARN_WNE_INC1_P10),]
 testSet =  data.frame(scale(testSet, center=TRUE, scale=TRUE))
-
-rfModelLow = randomForest(MN_EARN_WNE_INC1_P10 ~ ., trainSet, ntree= 500)
+set.seed(123)
+rfModelLow = randomForest(MN_EARN_WNE_INC1_P10 ~ ., trainSet, ntree= 500, importance=TRUE)
 png("images/rf_low.png")
 plot(rfModelLow)
 dev.off()
 #We plot the error rate across decision trees.
-#The plot shows that the error become more stable after 120 decision trees.
+#The plot shows that the error become more stable after 100 decision trees.
 
 impLow <- importance(rfModelLow,type = 2)
 
