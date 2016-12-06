@@ -264,7 +264,8 @@ load("../data/random-forest-top.RData")
 <<varplot,echo=F,results=tex>>=
 xtable(varplot,digits=7)
 @
-\noindent In random forest regression, we can look at the importance of the model.   It consists of ``IncNodePurity", which is the average cummulative reduction in node impurity due to splits by a variable over the trees. It is also the mean decrease in MSE.   From the variance importance, we can see that the main positive relationships are from SAT math and ACT scores, concluding an existing positive correlation with mean earnings.   From the random forest model, we can choose the best features that represent our data.  In addition, the more selective schools that have a lower admission rate also play an important factor with mean earnings. 
+\noindent In random forest regression, we can look at the importance of the model. There are two types of importance measures shown above. The ``IncMSE"  is to show how bad the model perform without each variables.  It consists of ``IncNodePurity", which is the average cummulative reduction in node impurity due to splits by a variable over the trees. It is also the mean decrease in MSE.   From the variance importance, we can see that SAT math, ACT scores and admission rate are the key components of the model, concluding an existing positive correlation with mean earnings. From the random forest model, we can choose the best features that represent our data.  
+
 
 \clearpage
 \section{Results}
@@ -290,7 +291,7 @@ xtable(varplot,digits=7)
 \begin{figure}[H]
 \includegraphics[width=0.7\textwidth]{../images/rf_top.png}
 \end{figure}
-\noindent The plot shows that the error become more stable after 50 decision trees.
+\noindent The plot shows that the error become more stable after 200 decision trees.
 
 
 There is a positive relationship for high graduation rate, SAT math and ACT scores, which leads to an increase in mean earnings after graduation.  There is also a negative relationship for lower admission rate and pell grant recipients.  Schools that are more selective accept less students; so from our findings, an increase in admission rate would harm the mean earnings.  In addition, pell grant recipients usually come from below average family backgrounds, which lead to less earnings after graduation. 
