@@ -7,6 +7,7 @@ output: ioslides_presentation
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(xtable)
+
 load('../data/multiple-linear-reg.RData')
 load("../data/rigde-reg.RData")
 load("../data/rigde1-reg.RData")
@@ -44,6 +45,11 @@ Providing our client from the biotech industry with the most qualified schools t
 * middle tier = $30k - 75k
 * low tier < $30k
 
+## Random Forest variance importance 
+```{r}
+varplot
+```
+#### find best features to predict the future earnings
 
 ##Multiple linear regression
 
@@ -70,7 +76,7 @@ R_squared_summary
 
 ![](../images/ridgeCV_top.png)
 
-##Ridge regression coefficients and MSE
+##Ridge regression coefficients
 #### coefficients
 ```{r}
 coeff_ridge
@@ -80,20 +86,11 @@ coeff_ridge
 - Adds a penalty term to reduce overfitting, which produces better results than MPR. 
 - The results can best be explained through our coefficients.  
 
-#### MSE
+##Ridge MSE
 ```{r}
 full_mse_ridge
 ```
 
-##Random forest
-
-![](../images/rf_top.png)
-
-## Random Forest variance importance 
-```{r}
-varplot
-```
-#### find best features to predict the future earnings
 
 ##Observations: 
 - (+) relationship between future earnings and SAT math, ACT scores and graduation rate. 
@@ -101,19 +98,20 @@ varplot
   - the less schools they admit, the higher the earnings are. 
 - **Pell-grants** come from a more disadvantaged family, lack of resources.  People who don’t receive pell grants have more resources in support, which relates to higher earnings in the future.
 
-
-## Results 
-Provide a recommendation of schools to pick from in terms of specific skills. 
-We recommend choosing schools from our top school data set for the smallest admission rate, and highest SAT scores, ACT scores and graduation rate with respect to each skill.  
-
 ## California has the most top schools
-![](../images/college-frequency.png)
+
+```{r, out.width = "400px"}
+knitr::include_graphics("../images/college-frequency.png")
+```
 
 #### California has most of the largest top STEM programs, vaguely followed by Texas and New York.  
 
 ##Biology schools 
-![](../images/biggestBio.png)
+```{r, out.width = "500px"}
+knitr::include_graphics("../images/biggestBio.png")
+```
 
+##Biology schools
 ```{r}
 bio
 ```
